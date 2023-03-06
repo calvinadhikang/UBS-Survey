@@ -19,41 +19,47 @@
 	<title>Document</title>
 </head>
 <body>
-	<!-- <h1>Login</h1>
-	<?php echo validation_errors(); ?>
-	<?php echo form_open('login/action'); ?>
-		Username : <input type="text" name="username">
-		<button>Login</button>
-	</form> -->
 	<div class="d-lg-flex half">
-    <div class="bg order-1 order-md-2" style="background-color: rgb(10,47,182);"></div>
+    <div class="bg order-1 order-md-2" style="background-color: rgb(10,47,182);">
+		<div style="margin-left: -30px; margin-top: 130px;">
+							<img src="assets/img/LogoUbs2.jpg" class="rounded" width="350px" height="400px">
+						</div>
+	</div>
+		
   <div class="contents order-2 order-md-1">
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7">
+						<div style="margin-left: -150px; margin-top: -160px">
+							<img src="assets/img/LogoUbs.png" width="220px" height="100px">
+						</div>
+						<br><br>
+						<br>
+						<br><br><br>
             <h3>Sign In</h3>
             <br>
             <br>
             <form action="#" method="post">
               <div class="form-group first">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" placeholder="Enter Your Username" id="username">
+								<?php echo validation_errors(); ?>
+								<?php echo form_open('login/action'); ?>
+								<label for="username">Username</label>
+								<input type="text" class="form-control" placeholder="Enter Your Username" name="username" style="border: 1px solid black;">
+								<br>
+								<button type="submit" class="btn btn-block btn-primary">Login</button>
+								</form>
               </div>
-              <div class="form-group last mb-3">
+              <!-- <div class="form-group last mb-3">
                 <label for="password">Password</label>
                 <input type="password" class="form-control" placeholder="Your Password" id="password">
-              </div>
-              
-              <div class="d-flex mb-5 align-items-center">
+              </div> -->
+              <!-- <div class="d-flex mb-5 align-items-center">
                 <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
                   <input type="checkbox" checked="checked"/>
                   <div class="control__indicator"></div>
                 </label>
                 <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
-              </div>
-
-              <input type="submit" value="Log In" class="btn btn-block btn-primary">
-
+              </div> -->
             </form>
           </div>
         </div>
