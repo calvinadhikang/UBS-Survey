@@ -17,7 +17,7 @@
 	<link id="pagestyle" href="assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<body>
+<body>	
 	<div class="min-height-300 bg-primary position-absolute w-100"></div>
   	<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div class="sidenav-header">
@@ -97,7 +97,7 @@
 	<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
 		<div class="container-fluid py-1 px-3">
 			<nav aria-label="breadcrumb">
-			<h3 class="font-weight-bolder text-white mb-0">Master User</h3>
+			<h3 class="font-weight-bolder text-white mb-0">Master Department</h3>
 			</nav>
 		</div>
     </nav>
@@ -106,12 +106,12 @@
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
 			<div class="container-fluid py-1 px-3">
 				<nav aria-label="breadcrumb">
-				<h3 class="font-weight-bolder text-white mb-0">Tabel User</h3>
+				<h3 class="font-weight-bolder text-white mb-0">Tabel Department</h3>
 				</nav>
 			</div>
         </div>
     </div>
-	<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;" type="submit">Add User</button>
+	<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;" type="submit">Add Department</button>
 	<br>
 	  <div class="container-fluid py-4">
       <div class="row">
@@ -122,12 +122,8 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Department</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Username</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kode</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                     </tr>
                   </thead>
@@ -135,24 +131,12 @@
                     <tr>
                     	<td>
 							<div class="d-flex px-3 py-1">
-								<p class="text-xs font-weight-bold mb-0">1</p>
+								<p class="text-xs font-weight-bold mb-0">AS</p>
 							</div>
                     	</td>
 						<td>
 							<span class="text-secondary text-xs font-weight-bold">Asahan</span>
 						</td>
-						<td class="align-middle text-center text-sm"> 
-							<span class="text-secondary text-xs font-weight-bold">Ivander</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">ibw</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">Admin</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="badge badge-sm bg-gradient-success">Aktif</span>
-						</td>
 						<td class="align-middle text-center">
 							<button class="btn btn-primary">Update</button>
 							<button class="btn btn-danger">Delete</button>
@@ -161,24 +145,12 @@
                     <tr>
 						<td>
 							<div class="d-flex px-3 py-1">
-								<p class="text-xs font-weight-bold mb-0">2</p>
+								<p class="text-xs font-weight-bold mb-0">HM</p>
 							</div>
                     	</td>
 						<td>
 							<span class="text-secondary text-xs font-weight-bold">Hubungan Masyarakat</span>
 						</td>
-						<td class="align-middle text-center text-sm"> 
-							<span class="text-secondary text-xs font-weight-bold">Berwyn</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">gans</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">Responden</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="badge badge-sm bg-gradient-danger">Non-Aktif</span>
-						</td>
 						<td class="align-middle text-center">
 							<button class="btn btn-primary">Update</button>
 							<button class="btn btn-danger">Delete</button>
@@ -187,50 +159,12 @@
                     <tr>
 						<td>
 							<div class="d-flex px-3 py-1">
-								<p class="text-xs font-weight-bold mb-0">3</p>
-							</div>
-                    	</td>
-						<td>
-							<span class="text-secondary text-xs font-weight-bold">Design Visual</span>
-						</td>
-						<td class="align-middle text-center text-sm"> 
-							<span class="text-secondary text-xs font-weight-bold">Wijaya</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">banget</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">Responden</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="badge badge-sm bg-gradient-danger">Non-Aktif</span>
-						</td>
-						<td class="align-middle text-center">
-							<button class="btn btn-primary">Update</button>
-							<button class="btn btn-danger">Delete</button>
-						</td>
-                    </tr>
-                    <tr>
-						<td>
-							<div class="d-flex px-3 py-1">
-								<p class="text-xs font-weight-bold mb-0">4</p>
+								<p class="text-xs font-weight-bold mb-0">KN</p>
 							</div>
                     	</td>
 						<td>
 							<span class="text-secondary text-xs font-weight-bold">Keamanan</span>
 						</td>
-						<td class="align-middle text-center text-sm"> 
-							<span class="text-secondary text-xs font-weight-bold">Caca</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">Cacu</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">Admin</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="badge badge-sm bg-gradient-danger">Non-Aktif</span>
-						</td>
 						<td class="align-middle text-center">
 							<button class="btn btn-primary">Update</button>
 							<button class="btn btn-danger">Delete</button>
@@ -239,23 +173,11 @@
                     <tr>
 						<td>
 							<div class="d-flex px-3 py-1">
-								<p class="text-xs font-weight-bold mb-0">5</p>
+								<p class="text-xs font-weight-bold mb-0">DV</p>
 							</div>
                     	</td>
 						<td>
-							<span class="text-secondary text-xs font-weight-bold">It</span>
-						</td>
-						<td class="align-middle text-center text-sm"> 
-							<span class="text-secondary text-xs font-weight-bold">Angel</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">agl123</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">Responden</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="badge badge-sm bg-gradient-success">Aktif</span>
+							<span class="text-secondary text-xs font-weight-bold">Design Visual</span>
 						</td>
 						<td class="align-middle text-center">
 							<button class="btn btn-primary">Update</button>
@@ -280,4 +202,5 @@
 <script src="/assets/js/plugins/chartjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>
+
 

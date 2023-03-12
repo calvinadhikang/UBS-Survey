@@ -70,7 +70,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link "  href="<?= base_url('sesi') ?>">
+          <a class="nav-link " href="<?= base_url('sesi') ?>">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
             </div>
@@ -97,7 +97,7 @@
 	<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
 		<div class="container-fluid py-1 px-3">
 			<nav aria-label="breadcrumb">
-			<h3 class="font-weight-bolder text-white mb-0">Master User</h3>
+			<h3 class="font-weight-bolder text-white mb-0">Master Session</h3>
 			</nav>
 		</div>
     </nav>
@@ -106,12 +106,12 @@
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
 			<div class="container-fluid py-1 px-3">
 				<nav aria-label="breadcrumb">
-				<h3 class="font-weight-bolder text-white mb-0">Tabel User</h3>
+				<h3 class="font-weight-bolder text-white mb-0">Tabel Session</h3>
 				</nav>
 			</div>
         </div>
     </div>
-	<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;" type="submit">Add User</button>
+	<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;" type="submit">Add Session</button>
 	<br>
 	  <div class="container-fluid py-4">
       <div class="row">
@@ -123,11 +123,9 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Department</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Username</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Session</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Mulai</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Akhir</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                     </tr>
                   </thead>
@@ -139,19 +137,13 @@
 							</div>
                     	</td>
 						<td>
-							<span class="text-secondary text-xs font-weight-bold">Asahan</span>
+							<span class="text-secondary text-xs font-weight-bold">Session Februari 2023</span>
 						</td>
-						<td class="align-middle text-center text-sm"> 
-							<span class="text-secondary text-xs font-weight-bold">Ivander</span>
+						<td>
+							<span class="text-secondary text-xs font-weight-bold">01 Februari 2023</span>
 						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">ibw</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">Admin</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="badge badge-sm bg-gradient-success">Aktif</span>
+						<td>
+							<span class="text-secondary text-xs font-weight-bold">28 Februari 2023</span>
 						</td>
 						<td class="align-middle text-center">
 							<button class="btn btn-primary">Update</button>
@@ -165,19 +157,13 @@
 							</div>
                     	</td>
 						<td>
-							<span class="text-secondary text-xs font-weight-bold">Hubungan Masyarakat</span>
+							<span class="text-secondary text-xs font-weight-bold">Session Maret 2023</span>
 						</td>
-						<td class="align-middle text-center text-sm"> 
-							<span class="text-secondary text-xs font-weight-bold">Berwyn</span>
+						<td>
+							<span class="text-secondary text-xs font-weight-bold">01 Maret 2023</span>
 						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">gans</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">Responden</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="badge badge-sm bg-gradient-danger">Non-Aktif</span>
+						<td>
+							<span class="text-secondary text-xs font-weight-bold">31 Maret 2023</span>
 						</td>
 						<td class="align-middle text-center">
 							<button class="btn btn-primary">Update</button>
@@ -191,71 +177,13 @@
 							</div>
                     	</td>
 						<td>
-							<span class="text-secondary text-xs font-weight-bold">Design Visual</span>
+							<span class="text-secondary text-xs font-weight-bold">Session April</span>
 						</td>
-						<td class="align-middle text-center text-sm"> 
-							<span class="text-secondary text-xs font-weight-bold">Wijaya</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">banget</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">Responden</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="badge badge-sm bg-gradient-danger">Non-Aktif</span>
-						</td>
-						<td class="align-middle text-center">
-							<button class="btn btn-primary">Update</button>
-							<button class="btn btn-danger">Delete</button>
-						</td>
-                    </tr>
-                    <tr>
 						<td>
-							<div class="d-flex px-3 py-1">
-								<p class="text-xs font-weight-bold mb-0">4</p>
-							</div>
-                    	</td>
+							<span class="text-secondary text-xs font-weight-bold">01 April 2023</span>
+						</td>
 						<td>
-							<span class="text-secondary text-xs font-weight-bold">Keamanan</span>
-						</td>
-						<td class="align-middle text-center text-sm"> 
-							<span class="text-secondary text-xs font-weight-bold">Caca</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">Cacu</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">Admin</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="badge badge-sm bg-gradient-danger">Non-Aktif</span>
-						</td>
-						<td class="align-middle text-center">
-							<button class="btn btn-primary">Update</button>
-							<button class="btn btn-danger">Delete</button>
-						</td>
-                    </tr>
-                    <tr>
-						<td>
-							<div class="d-flex px-3 py-1">
-								<p class="text-xs font-weight-bold mb-0">5</p>
-							</div>
-                    	</td>
-						<td>
-							<span class="text-secondary text-xs font-weight-bold">It</span>
-						</td>
-						<td class="align-middle text-center text-sm"> 
-							<span class="text-secondary text-xs font-weight-bold">Angel</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">agl123</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="text-secondary text-xs font-weight-bold">Responden</span>
-						</td>
-						<td class="align-middle text-center text-sm">
-							<span class="badge badge-sm bg-gradient-success">Aktif</span>
+							<span class="text-secondary text-xs font-weight-bold">30 April 2023</span>
 						</td>
 						<td class="align-middle text-center">
 							<button class="btn btn-primary">Update</button>
@@ -280,4 +208,5 @@
 <script src="/assets/js/plugins/chartjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>
+
 

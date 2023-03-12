@@ -18,11 +18,6 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-	<!-- Welcome admin <br>
-	<a href="<?= base_url() ?>"><button>Logout</button></a>
-	<a href="<?= base_url('user') ?>"><button>User</button></a>
-	<a href="<?= base_url('pertanyaan') ?>"><button>Pertanyaan</button></a> -->
-	
 	<div class="min-height-300 bg-primary position-absolute w-100"></div>
   	<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div class="sidenav-header">
@@ -43,7 +38,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" href="../pages/dashboard.html">
+          <a class="nav-link active" href="<?= base_url('dashboard') ?>">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
             </div>
@@ -51,7 +46,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/tables.html">
+          <a class="nav-link " href="<?= base_url('department') ?>">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>
@@ -75,33 +70,22 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/rtl.html">
+          <a class="nav-link "  href="<?= base_url('sesi') ?>">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Master Session</span>
           </a>
         </li>
-		<!-- <li class="nav-item">
-        </li>
+		<br><br><br><br>
 		<li class="nav-item">
-        </li>
-		<li class="nav-item">
-        </li>
-		<li class="nav-item">
-        </li>
-		<li class="nav-item">
-        </li>
-		<li class="nav-item">
-        </li>
-		<li class="nav-item">
-			<a class="nav-link " href="../pages/rtl.html">
+			<a class="nav-link " href="<?= base_url() ?>">
 				<div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
 					<i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
 				</div>
-				<span class="nav-link-text ms-1">Master Session</span>
+				<span class="nav-link-text ms-1">Logout</span>
 			</a>
-        </li> -->
+        </li>
       </ul>
     </div>
 	</aside>
@@ -127,6 +111,7 @@
 			</div>
         </div>
       </div>
+	  <button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;" type="submit">Update</button>
 	<div class="col-lg-15">
         <div class="card card-carousel overflow-hidden h-100 p-0">
             <h4 style="text-align: center;">Session 1</h4>
