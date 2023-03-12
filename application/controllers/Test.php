@@ -22,4 +22,11 @@ class Test extends CI_Controller {
 	{
 		$this->load->view('test');
 	}
+
+	public function api()
+	{
+		$this->load->database();
+		$query = $this->db->query('SELECT * FROM TEST LIMIT 1');
+		echo $query->row()->nama;
+	}
 }

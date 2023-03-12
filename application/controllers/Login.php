@@ -5,13 +5,13 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->database();
 		$this->load->view('login');
 	}
 
 	public function action()
 	{
 		$username = $this->input->post('username');
-		var_dump($username);
 		
 		if ($username != "admin") {
 			redirect(base_url());
