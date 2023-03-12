@@ -11,11 +11,12 @@ class Login extends CI_Controller {
 	public function action()
 	{
 		$username = $this->input->post('username');
+		var_dump($username);
 		
 		if ($username != "admin") {
-			redirect('/');
+			redirect(base_url());
 		}else{
-			redirect('/dashboard');
+			redirect(base_url().'dashboard');
 		}
 	}
 }
