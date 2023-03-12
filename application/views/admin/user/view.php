@@ -111,7 +111,7 @@
 			</div>
         </div>
     </div>
-	<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;" type="submit">Add User</button>
+	<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Add User</button>
 	<br>
 	  <div class="container-fluid py-4">
       <div class="row">
@@ -269,7 +269,62 @@
           </div>
         </div>
       </div> 	
-    
+
+	<!-- modal untuk Add -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Tambah User</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body p-0">
+					<div class="container-fluid">
+						<div class="row gy-4">
+							<div class="col-lg-8">
+								<div class="col-lg-10">
+									<label class="form-label">Nama User</label>
+									<input type="text" class="form-control" name="nama" placeholder="Masukkan Nama User">
+								</div>
+								<br>
+								<div class="col-lg-10">
+									<label class="form-label">Department</label>
+									<input type="text" class="form-control" name="namadepartment" placeholder=" Masukkan Nama Department">
+								</div>
+								<br>
+								<div class="col-lg-10">
+									<label class="form-label">Username</label>
+									<input type="text" class="form-control" name="username" placeholder="Masukkan Username">
+								</div>
+								<br>
+								<div class="col-lg-10">
+									<label class="form-label">Password</label>
+									<input type="text" class="form-control" name="pass" placeholder="Masukan Password">
+								</div>
+								<br>
+								<div class="col-lg-10">
+									<label class="form-label">Role</label>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+										<label class="form-check-label" for="flexRadioDefault1">Admin</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+										<label class="form-check-label" for="flexRadioDefault2">Responden</label>
+									</div>
+								</div>
+								<br>
+								<div class="col-lg-10">
+									<button type="submit" data-bs-dismiss="modal" class="btn btn-danger">Cancel</button>
+									<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Add User</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </main>
 </body>
 <!--   Core JS Files   -->
