@@ -111,7 +111,7 @@
 			</div>
         </div>
     </div>
-	<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;" type="submit">Add Pertanyaan</button>
+	<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Pertanyaan</button>
 	<br>
 	  <div class="container-fluid py-4">
       <div class="row">
@@ -205,7 +205,35 @@
           </div>
         </div>
       </div> 	
-    
+
+    <!-- modal untuk Add -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Tambah Pertanyaan</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body p-0">
+					<div class="container-fluid">
+						<div class="row gy-4">
+							<div class="col-lg-8">
+								<div class="col-lg-6">
+									<label class="form-label">Pertanyaan</label><br>
+									<textarea cols="60" rows="20" placeholder="Masukkan Pertanyaan"></textarea>
+								</div>
+								<br>
+								<div class="col-lg-10">
+									<button type="submit" data-bs-dismiss="modal" class="btn btn-danger">Cancel</button>
+									<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Add Pertanyaan</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </main>
 </body>
 <!--   Core JS Files   -->
