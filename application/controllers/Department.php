@@ -4,8 +4,8 @@ class Department extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->view('template/header');
+		$this->load->view('template/admin/header');
 		$this->load->view('admin/department/view');
-		$this->load->view('template/footer');
+		$this->load->view('template/admin/footer');
 	}
 }
