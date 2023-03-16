@@ -55,4 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['test'] = 'test';
 $route['dashboard'] = 'admin';
+$route['session'] = 'session';
+
+
 $route['testAPI'] = 'test/api';
