@@ -5,10 +5,15 @@ class PertanyaanModel extends CI_Model {
 
     public function add($text)
     {
-        $data = array(
-            'TEXT' => $text 
-        );
-        $this->db->insert($this->table_name, $data);
+        if ($this->duplicate($text)) {
+            return 0;
+        }else{
+            $data = array(
+                'TEXT' => $text 
+            );
+            $this->db->insert($this->table_name, $data);
+            return 1;
+        }
     }
 
     public function delete($id)
@@ -25,12 +30,27 @@ class PertanyaanModel extends CI_Model {
     }
 
     public function update($id, $text){
-        $data = array(
-            'ID' => $id,
-            'TEXT' => $text
-        );
-        $this->db->where('ID', $id);
-        $this->db->update($this->table_name, $data);
-        return 1;
+        if ($this->duplicate($text)) {
+            return 0;
+        }else{
+            $data = array(
+                'ID' => $id,
+                'TEXT' => $text
+            );
+            $this->db->where('ID', $id);
+            $this->db->update($this->table_name, $data);
+            return 1;
+        }
+    }
+
+    public function duplicate($text)
+    {
+        $query = $this->db->query("SELECT COUNT(*) AS TOTAL FROM $this->table_name WHERE TEXT = '$text'");
+        $count_row = ($query->result()[0]->TOTAL);
+        if ($count_row > 0) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 }

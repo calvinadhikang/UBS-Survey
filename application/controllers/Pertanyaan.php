@@ -20,9 +20,13 @@ class Pertanyaan extends CI_Controller {
 	public function add()
 	{
 		$text = $this->input->post('text');
-		$this->Pertanyaan->add($text);
+		$result = $this->Pertanyaan->add($text);
 
-		$this->toastr->success('Success Tambah Pertanyaan');
+		if ($result) {
+			$this->toastr->success('Success Tambah Pertanyaan');
+		}else{
+			$this->toastr->error('Pertanyaan tidak boleh kembar');
+		}
 		return redirect(base_url('pertanyaan'));
 	}
 
@@ -39,12 +43,14 @@ class Pertanyaan extends CI_Controller {
 	{
 		$id = $this->input->post('id');
 		$text = $this->input->post('text');
-		
-		$this->Pertanyaan->update($id, $text);
-	
-		$this->toastr->success('Success Update Pertanyaan');
-		return redirect(base_url('pertanyaan'));
+		$result = $this->Pertanyaan->update($id, $text);
 
-		# code...
+		if ($result) {
+			$this->toastr->success('Success Update Pertanyaan');
+		}else{
+			$this->toastr->error('Pertanyaan tidak boleh kembar');
+		}
+	
+		return redirect(base_url('pertanyaan'));
 	}
 }
