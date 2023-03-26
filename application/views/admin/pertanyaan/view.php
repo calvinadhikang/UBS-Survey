@@ -44,81 +44,22 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>
-													<div class="d-flex px-3 py-1">
-														<p class="text-xs font-weight-bold mb-0">1</p>
-													</div>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">Apakah divisi
-														sudah bagus?</span>
-												</td>
-												<td class="align-middle text-center">
-													<button class="btn btn-primary">Update</button>
-													<button class="btn btn-danger">Delete</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="d-flex px-3 py-1">
-														<p class="text-xs font-weight-bold mb-0">2</p>
-													</div>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">Apakah divisi
-														sudah berjalan sesuai aturan?</span>
-												</td>
-												<td class="align-middle text-center">
-													<button class="btn btn-primary">Update</button>
-													<button class="btn btn-danger">Delete</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="d-flex px-3 py-1">
-														<p class="text-xs font-weight-bold mb-0">3</p>
-													</div>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">Berapa nilai
-														kepuasan untuk divisi ini?</span>
-												</td>
-												<td class="align-middle text-center">
-													<button class="btn btn-primary">Update</button>
-													<button class="btn btn-danger">Delete</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="d-flex px-3 py-1">
-														<p class="text-xs font-weight-bold mb-0">4</p>
-													</div>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">Berapa nilai
-														kekompakkan divisi ini?</span>
-												</td>
-												<td class="align-middle text-center">
-													<button class="btn btn-primary">Update</button>
-													<button class="btn btn-danger">Delete</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="d-flex px-3 py-1">
-														<p class="text-xs font-weight-bold mb-0">5</p>
-													</div>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">Apakah divisi
-														ini mengalami banyak masalah?</span>
-												</td>
-												<td class="align-middle text-center">
-													<button class="btn btn-primary">Update</button>
-													<button class="btn btn-danger">Delete</button>
-												</td>
-											</tr>
+											<?php foreach ($data as $key => $value) { ?>
+												<tr>
+													<td>
+														<div class="d-flex px-3 py-1">
+															<p class="text-xs font-weight-bold mb-0"><?= $value->ID ?></p>
+														</div>
+													</td>
+													<td>
+														<span class="text-secondary text-xs font-weight-bold"><?= $value->TEXT ?></span>
+													</td>
+													<td class="align-middle text-center">
+														<button class="btn btn-primary btnUpdate" data-bs-toggle="modal" data-bs-target="#updateModal" teks="<?= $value->TEXT ?>" id="<?= $value->ID ?>">Update</button>
+														<button class="btn btn-danger btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" teks="<?= $value->TEXT ?>" id="<?= $value->ID ?>">Delete</button>
+													</td>
+												</tr>
+											<?php } ?>
 										</tbody>
 									</table>
 								</div>
@@ -127,6 +68,7 @@
 					</div>
 				</div>
 			</div>
+
 			<!-- modal untuk Add -->
 			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
 				aria-hidden="true">
@@ -138,24 +80,117 @@
 						</div>
 						<div class="modal-body p-0">
 							<div class="container-fluid">
-								<div class="row gy-4">
-									<div class="col-lg-8">
-										<div class="col-lg-6">
-											<label class="form-label">Pertanyaan</label><br>
-											<textarea cols="60" rows="20" placeholder="Masukkan Pertanyaan"></textarea>
-										</div>
-										<br>
-										<div class="col-lg-10">
-											<button type="submit" data-bs-dismiss="modal"
+								<form action="<?= base_url('pertanyaan/add') ?>" method="post">
+									<div class="row gy-4">
+										<div class="col-lg-8">
+											<div class="col-lg-6">
+												<label class="form-label">Pertanyaan</label><br>
+												<textarea placeholder="Masukkan Pertanyaan" name="text" class="form-control w-100"></textarea>
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<button type="button" data-bs-dismiss="modal"
 												class="btn btn-danger">Cancel</button>
-											<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Add
-												Pertanyaan</button>
+												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Add
+													Pertanyaan</button>
+												</div>
+											</div>
 										</div>
 									</div>
-								</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- modal untuk Delete -->
+			<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Yakin Hapus Pertanyaan Dibawah Ini ?</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body p-0">
+							<div class="container-fluid">
+								<form action="<?= base_url('pertanyaan/delete') ?>" method="post">
+									<div class="row gy-4">
+										<div class="col-lg-8">
+											<div class="col-lg-6">
+												<input type="hidden" id="deleteId" name="id" value="">
+												<p id="deleteText"></p>
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<button type="button" data-bs-dismiss="modal"
+												class="btn btn-danger">Cancel</button>
+												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Hapus Pertanyaan</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- modal untuk Update -->
+			<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Ganti Pertanyaan Dibawah Ini ?</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body p-0">
+							<div class="container-fluid">
+								<form action="<?= base_url('pertanyaan/update') ?>" method="post">
+									<div class="row gy-4">
+										<div class="col-lg-8">
+											<div class="col-lg-6">
+												<input type="hidden" id="updateId" name="id" value="">
+												<textarea class="form-control w-100" id="updateText" name="text"></textarea>
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<button type="button" data-bs-dismiss="modal"
+												class="btn btn-danger">Cancel</button>
+												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Hapus Pertanyaan</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 	</main>
+
+<script>
+	$(document).ready(() => {
+		$('body').on('click', '.btnDelete', function() {
+			let teks = $(this).attr('teks');
+			let id = $(this).attr('id');
+
+			$('#deleteText').html(teks);
+			$('#deleteId').val(id);
+		});
+
+		$('body').on('click', '.btnUpdate', function() {
+			let teks = $(this).attr('teks');
+			let id = $(this).attr('id');
+
+			console.log(teks);
+
+			$('#updateText').html(teks);
+			$('#updateId').val(id);
+		});
+	})
+</script>
