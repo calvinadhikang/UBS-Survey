@@ -50,75 +50,28 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>
-													<div class="d-flex px-3 py-1">
-														<p class="text-xs font-weight-bold mb-0">1</p>
-													</div>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">Session Februari
-														2023</span>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">01 Februari
-														2023</span>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">28 Februari
-														2023</span>
-												</td>
-												<td class="align-middle text-center">
-													<button class="btn btn-primary">Update</button>
-													<button class="btn btn-danger">Delete</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="d-flex px-3 py-1">
-														<p class="text-xs font-weight-bold mb-0">2</p>
-													</div>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">Session Maret
-														2023</span>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">01 Maret
-														2023</span>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">31 Maret
-														2023</span>
-												</td>
-												<td class="align-middle text-center">
-													<button class="btn btn-primary">Update</button>
-													<button class="btn btn-danger">Delete</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="d-flex px-3 py-1">
-														<p class="text-xs font-weight-bold mb-0">3</p>
-													</div>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">Session
-														April</span>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">01 April
-														2023</span>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">30 April
-														2023</span>
-												</td>
-												<td class="align-middle text-center">
-													<button class="btn btn-primary">Update</button>
-													<button class="btn btn-danger">Delete</button>
-												</td>
-											</tr>
+											<?php foreach ($data as $key => $value) { ?>
+												<tr>
+													<td>
+														<div class="d-flex px-3 py-1">
+															<p class="text-xs font-weight-bold mb-0"><?= $value->ID ?></p>
+														</div>
+													</td>
+													<td>
+														<span class="text-secondary text-xs font-weight-bold"><?= $value->NAMA ?></span>
+													</td>
+													<td>
+														<span class="text-secondary text-xs font-weight-bold"><?= $value->MULAI ?></span>
+													</td>
+													<td>
+														<span class="text-secondary text-xs font-weight-bold"><?= $value->AKHIR ?></span>
+													</td>
+													<td class="align-middle text-center">
+														<button class="btn btn-primary">Update</button>
+														<button class="btn btn-danger">Delete</button>
+													</td>
+												</tr>
+											<?php } ?>
 										</tbody>
 									</table>
 								</div>
@@ -139,35 +92,35 @@
 						</div>
 						<div class="modal-body p-0">
 							<div class="container-fluid">
-								<div class="row gy-4">
-									<div class="col-lg-8">
-										<div class="col-lg-10">
-											<label class="form-label">Nama Session</label>
-											<input type="text" class="form-control" name="namasession"
-												placeholder="Masukkan Nama Session">
-										</div>
-										<br>
-										<h5>Waktu Session</h5>
-										<div class="col-lg-10">
-											<label class="form-label">Tanggal Mulai</label>
-											<input type="text" class="form-control" name="tglmulai"
-												placeholder=" Masukkan Nama Department">
-										</div>
-										<br>
-										<div class="col-lg-10">
-											<label class="form-label">Tanggal Berakhir</label>
-											<input type="text" class="form-control" name="tglakhir"
-												placeholder="Masukkan Username">
-										</div>
-										<br>
-										<div class="col-lg-10">
-											<button type="submit" data-bs-dismiss="modal"
-												class="btn btn-danger">Cancel</button>
-											<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Add
-												Session</button>
+								<form action="<?= base_url('sesi/add') ?>" method="post">
+									<div class="row gy-4">
+										<div class="col-lg-8">
+											<div class="col-lg-10">
+												<label class="form-label">Nama Session</label>
+												<input type="text" class="form-control" name="nama"
+													placeholder="Masukkan Nama Session" required>
+											</div>
+											<br>
+											<h5>Waktu Session</h5>
+											<div class="col-lg-10">
+												<label class="form-label">Tanggal Mulai</label>
+												<input type="date" class="form-control" name="mulai" required>
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<label class="form-label">Tanggal Berakhir</label>
+												<input type="date" class="form-control" name="akhir" required>
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<button type="button" data-bs-dismiss="modal"
+													class="btn btn-danger">Cancel</button>
+												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Add
+													Session</button>
+											</div>
 										</div>
 									</div>
-								</div>
+								</form>
 							</div>
 						</div>
 					</div>

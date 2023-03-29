@@ -54,7 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['test'] = 'test';
-$route['dashboard'] = 'admin';
+$route['dashboard'] = 'dashboard';
 $route['session'] = 'sesi';
 
 $route['testAPI'] = 'test/api';

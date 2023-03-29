@@ -15,7 +15,7 @@ class Login extends CI_Controller {
 		if ($username != "admin") {
 			redirect(base_url());
 		}else{
-			redirect(base_url().'dashboard');
+			redirect(base_url('dashboard'));
 		}
 	}
 }

@@ -28,8 +28,8 @@
 					<div class="col-12">
 						<div class="card mb-4">
 							<div class="card-body px-0 pt-0 pb-2">
-								<div class="table-responsive p-0">
-									<table class="table align-items-center mb-0">
+								<div class="p-4"> 
+									<table class="table align-items-center mb-0 table-responsive" id="myTable">
 										<thead>
 											<tr>
 												<th
@@ -160,7 +160,7 @@
 											<div class="col-lg-10">
 												<button type="button" data-bs-dismiss="modal"
 												class="btn btn-danger">Cancel</button>
-												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Hapus Pertanyaan</button>
+												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Update Pertanyaan</button>
 												</div>
 											</div>
 										</div>
@@ -192,5 +192,7 @@
 			$('#updateText').html(teks);
 			$('#updateId').val(id);
 		});
+
+		$('#myTable').DataTable();
 	})
 </script>
