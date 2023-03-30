@@ -192,7 +192,5 @@
 			$('#updateText').html(teks);
 			$('#updateId').val(id);
 		});
-
-		$('#myTable').DataTable();
 	})
 </script>

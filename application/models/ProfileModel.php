@@ -31,12 +31,20 @@ class ProfileModel extends CI_Model {
         return TRUE;
     }
 
-    public function getProfile($idSession, $idDitanya)
+    public function getProfile($idSession, $idDitanya, $idTanya = null)
     {
-        return $this->db->get_where("R_PROFILE", [
-            'ID_SESSION' => $idSession,
-            'DIVISI_DITANYA' => $idDitanya
-            ])->result();
+        if ($idTanya == null) {
+            return $this->db->get_where("R_PROFILE", [
+                'ID_SESSION' => $idSession,
+                'DIVISI_DITANYA' => $idDitanya
+                ])->result();
+        }else{
+            return $this->db->get_where("R_PROFILE", [
+                'ID_SESSION' => $idSession,
+                'DIVISI_DITANYA' => $idDitanya,
+                'DIVISI_TANYA' => $idTanya
+                ])->result()[0];
+        }
     }
 
     public function getSurveyor($idSession, $idDitanya)
@@ -46,7 +54,7 @@ class ProfileModel extends CI_Model {
         
         $data = [];
         foreach ($profile as $key => $value) {
-            $data[] = $this->Divisi->get($value->DIVISI_TANYA)[0];
+            $data[] = $this->Divisi->get($value->DIVISI_TANYA);
         }
 
         return $data;

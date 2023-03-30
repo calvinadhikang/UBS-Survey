@@ -21,6 +21,16 @@ class UserModel extends CI_Model {
         }
     }
 
+    public function find($username, $password)
+    {
+        $result =  $this->db->query("SELECT * FROM $this->table_name WHERE USERNAME = '$username' AND PASSWORD = '$password'")->result();
+        if (count($result) > 0) {
+            return $result[0];
+        }else{
+            return null;
+        }
+    }
+
     public function delete($id)
     {
         $this->db->query("DELETE FROM $this->table_name WHERE ID = '$id'");
@@ -63,5 +73,17 @@ class UserModel extends CI_Model {
         } else {
             return FALSE;
         }
+    }
+
+    public function getSurvey($divisiTanya, $idSession)
+    {
+        $this->load->model("DivisiModel", 'Divisi');
+
+        $query = $this->db->query("SELECT * FROM R_PROFILE WHERE ID_SESSION = $idSession AND DIVISI_TANYA = '$divisiTanya'")->result();
+        $data = [];
+        foreach ($query as $key => $value) {
+            $data[] = $this->Divisi->get($value->DIVISI_DITANYA);
+        }
+        return $data;
     }
 }

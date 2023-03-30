@@ -33,7 +33,7 @@
 	<!-- END OF DataTables -->
 </head>
 <?php
-	$user = $_SESSION['login'];
+	
 ?>
 <body>
 
@@ -66,18 +66,21 @@
 							<div
 								style="border: 2px solid #004882; background-color: #004882; border-radius: 7px; text-align:center;">
 								<h5 style="color: white;"><?= $user->NAMA ?></h5>
-								<h7 style="color: white;">Admin</h7>
+								<h7 style="color: white;"><?= $user->DIVISI ?></h7>
 							</div>
-							<li class="nav-item">
-								<a class="nav-link active" href="<?= base_url('dashboard') ?>">
-									<div
-										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-										<i class="fas fa-table text-primary text-sm opacity-10"></i>
-									</div>
-									<span class="nav-link-text ms-1">Dashboard</span>
-								</a>
-							</li>
-							<li class="nav-item">
+							<?php
+							foreach ($survey as $key => $value) { ?>
+								<li class="nav-item">
+									<a class="nav-link active" href="<?= base_url('responden?quiz='.$value->ALIAS) ?>">
+										<div
+											class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+											<i class="fas fa-table text-primary text-sm opacity-10"></i>
+										</div>
+										<span class="nav-link-text ms-1"><?= $value->NAMA ?></span>
+									</a>
+								</li>
+							<?php } ?>
+							<!-- <li class="nav-item">
 								<a class="nav-link " href="<?= base_url('divisi') ?>">
 									<div
 										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -113,7 +116,7 @@
 									<span class="nav-link-text ms-1">Master Session</span>
 								</a>
 							</li>
-							<br><br><br><br>
+							<br><br><br><br> -->
 							<li class="nav-item">
 								<a class="nav-link " href="<?= base_url() ?>">
 									<div

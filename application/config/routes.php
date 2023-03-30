@@ -61,6 +61,8 @@ $route['divisi/add'] = 'divisi/add';
 $route['divisi/update'] = 'divisi/update';
 $route['divisi/delete'] = 'divisi/delete';
 $route['divisi/add/surveyor'] = 'divisi/addSurveyor';
+$route['divisi/detail/surveyor'] = 'divisi/viewSurveyor';
+$route['divisi/detail/surveyor/add'] = 'divisi/addPertanyaan';
 $route['divisi/(:any)'] = 'divisi/detail/$id';
 
 $route['session'] = 'sesi';

@@ -27,7 +27,7 @@ class DivisiModel extends CI_Model {
         if ($alias === null) {
             return $this->db->get($this->table_name)->result();
         }else{
-            return $this->db->get_where($this->table_name, ['ALIAS' => $alias])->result();
+            return $this->db->get_where($this->table_name, ['ALIAS' => $alias])->result()[0];
         }
     }
 
