@@ -36,7 +36,7 @@
 													Id</th>
 												<th
 													class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-													Department</th>
+													Divisi</th>
 												<th
 													class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
 													Nama</th>
@@ -55,142 +55,46 @@
 											</tr>
 										</thead>
 										<tbody>
+											<?php foreach ($data as $key => $value) { ?>
 											<tr>
 												<td>
 													<div class="d-flex px-3 py-1">
-														<p class="text-xs font-weight-bold mb-0">1</p>
+														<p class="text-xs font-weight-bold mb-0"><?= $value->ID ?></p>
 													</div>
 												</td>
 												<td>
-													<span class="text-secondary text-xs font-weight-bold">Asahan</span>
+													<span class="text-secondary text-xs font-weight-bold"><?= $value->DIVISI ?></span>
 												</td>
 												<td class="align-middle text-center text-sm">
-													<span class="text-secondary text-xs font-weight-bold">Ivander</span>
+													<span class="text-secondary text-xs font-weight-bold"><?= $value->NAMA ?></span>
 												</td>
 												<td class="align-middle text-center text-sm">
-													<span class="text-secondary text-xs font-weight-bold">ibw</span>
+													<span class="text-secondary text-xs font-weight-bold"><?= $value->USERNAME ?></span>
 												</td>
 												<td class="align-middle text-center text-sm">
-													<span class="text-secondary text-xs font-weight-bold">Admin</span>
+													<?php 
+														$role = "Admin";
+														if ($value->ROLE == 1) {
+															$role = "Responden";
+														}
+													?>
+													<span class="text-secondary text-xs font-weight-bold"><?= $role ?></span>
 												</td>
 												<td class="align-middle text-center text-sm">
-													<span class="badge badge-sm bg-gradient-success">Aktif</span>
+													<?php 
+														$status = "Non-Aktif";
+														if($value->STATUS){
+															$status = "Aktif";
+														}
+													?>
+													<span class="badge badge-sm bg-gradient-success"><?= $status ?></span>
 												</td>
 												<td class="align-middle text-center">
-													<button class="btn btn-primary">Update</button>
-													<button class="btn btn-danger">Delete</button>
+													<button class="btn btn-primary btnUpdate" data-bs-toggle="modal" data-bs-target="#updateModal" nama="<?= $value->NAMA ?>" id="<?= $value->ID ?>">Update</button>
+													<button class="btn btn-danger btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" nama="<?= $value->NAMA ?>" id="<?= $value->ID ?>">Delete</button>
 												</td>
 											</tr>
-											<tr>
-												<td>
-													<div class="d-flex px-3 py-1">
-														<p class="text-xs font-weight-bold mb-0">2</p>
-													</div>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">Hubungan
-														Masyarakat</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span class="text-secondary text-xs font-weight-bold">Berwyn</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span class="text-secondary text-xs font-weight-bold">gans</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span
-														class="text-secondary text-xs font-weight-bold">Responden</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span class="badge badge-sm bg-gradient-danger">Non-Aktif</span>
-												</td>
-												<td class="align-middle text-center">
-													<button class="btn btn-primary">Update</button>
-													<button class="btn btn-danger">Delete</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="d-flex px-3 py-1">
-														<p class="text-xs font-weight-bold mb-0">3</p>
-													</div>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">Design
-														Visual</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span class="text-secondary text-xs font-weight-bold">Wijaya</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span class="text-secondary text-xs font-weight-bold">banget</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span
-														class="text-secondary text-xs font-weight-bold">Responden</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span class="badge badge-sm bg-gradient-danger">Non-Aktif</span>
-												</td>
-												<td class="align-middle text-center">
-													<button class="btn btn-primary">Update</button>
-													<button class="btn btn-danger">Delete</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="d-flex px-3 py-1">
-														<p class="text-xs font-weight-bold mb-0">4</p>
-													</div>
-												</td>
-												<td>
-													<span
-														class="text-secondary text-xs font-weight-bold">Keamanan</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span class="text-secondary text-xs font-weight-bold">Caca</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span class="text-secondary text-xs font-weight-bold">Cacu</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span class="text-secondary text-xs font-weight-bold">Admin</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span class="badge badge-sm bg-gradient-danger">Non-Aktif</span>
-												</td>
-												<td class="align-middle text-center">
-													<button class="btn btn-primary">Update</button>
-													<button class="btn btn-danger">Delete</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="d-flex px-3 py-1">
-														<p class="text-xs font-weight-bold mb-0">5</p>
-													</div>
-												</td>
-												<td>
-													<span class="text-secondary text-xs font-weight-bold">It</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span class="text-secondary text-xs font-weight-bold">Angel</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span class="text-secondary text-xs font-weight-bold">agl123</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span
-														class="text-secondary text-xs font-weight-bold">Responden</span>
-												</td>
-												<td class="align-middle text-center text-sm">
-													<span class="badge badge-sm bg-gradient-success">Aktif</span>
-												</td>
-												<td class="align-middle text-center">
-													<button class="btn btn-primary">Update</button>
-													<button class="btn btn-danger">Delete</button>
-												</td>
-											</tr>
+											<?php } ?>
 										</tbody>
 									</table>
 								</div>
@@ -211,55 +115,94 @@
 						</div>
 						<div class="modal-body p-0">
 							<div class="container-fluid">
-								<div class="row gy-4">
-									<div class="col-lg-8">
-										<div class="col-lg-10">
-											<label class="form-label">Nama User</label>
-											<input type="text" class="form-control" name="nama"
-												placeholder="Masukkan Nama User">
-										</div>
-										<br>
-										<div class="col-lg-10">
-											<label class="form-label">Department</label>
-											<input type="text" class="form-control" name="namadepartment"
-												placeholder=" Masukkan Nama Department">
-										</div>
-										<br>
-										<div class="col-lg-10">
-											<label class="form-label">Username</label>
-											<input type="text" class="form-control" name="username"
-												placeholder="Masukkan Username">
-										</div>
-										<br>
-										<div class="col-lg-10">
-											<label class="form-label">Password</label>
-											<input type="text" class="form-control" name="pass"
-												placeholder="Masukan Password">
-										</div>
-										<br>
-										<div class="col-lg-10">
-											<label class="form-label">Role</label>
-											<div class="form-check">
-												<input class="form-check-input" type="radio" name="flexRadioDefault"
-													id="flexRadioDefault1">
-												<label class="form-check-label" for="flexRadioDefault1">Admin</label>
+								<form action="<?= base_url('user/add') ?>" method="post">
+									<div class="row gy-4">
+										<div class="col-lg-8">
+											<div class="col-lg-10">
+												<label class="form-label">Nama User</label>
+												<input type="text" class="form-control" name="nama"
+													placeholder="Masukkan Nama User">
 											</div>
-											<div class="form-check">
-												<input class="form-check-input" type="radio" name="flexRadioDefault"
-													id="flexRadioDefault2" checked>
-												<label class="form-check-label"
-													for="flexRadioDefault2">Responden</label>
+											<br>
+											<div class="col-lg-10">
+												<label class="form-label">Divisi</label>
+												<select name="divisi" id="" class="form-control">
+													<option value="" selected disabled>Pilih Divisi</option>
+													<?php foreach ($divisi as $key => $value) { ?>
+														<option value="<?= $value->ALIAS ?>"><?= $value->NAMA ?></option>
+													<?php } ?>
+												</select>
 											</div>
-										</div>
-										<br>
-										<div class="col-lg-10">
-											<button type="submit" data-bs-dismiss="modal"
-												class="btn btn-danger">Cancel</button>
-											<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Add
-												User</button>
+											<br>
+											<div class="col-lg-10">
+												<label class="form-label">Username</label>
+												<input type="text" class="form-control" name="username"
+													placeholder="Masukkan Username">
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<label class="form-label">Password</label>
+												<input type="text" class="form-control" name="password"
+													placeholder="Masukan Password">
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<label class="form-label">Role</label>
+												<div class="form-check">
+													<input class="form-check-input" type="radio" name="role"
+														id="flexRadioDefault1" value="0">
+													<label class="form-check-label" for="flexRadioDefault1">Admin</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="radio" name="role"
+														id="flexRadioDefault2" checked value="1">
+													<label class="form-check-label"
+														for="flexRadioDefault2">Responden</label>
+												</div>
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<button type="button" data-bs-dismiss="modal"
+													class="btn btn-danger">Cancel</button>
+												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Add
+													User</button>
+											</div>
 										</div>
 									</div>
-								</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- UNTUK MODAL SAAT DI TEKAN DELETE -->
+			<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Yakin Hapus User Dibawah Ini ?</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body p-0">
+							<div class="container-fluid">
+								<form action="<?= base_url('user/delete') ?>" method="post">
+									<div class="row gy-4">
+										<div class="col-lg-8">
+											<div class="col-lg-10">
+												<p id="deleteName"></p>
+												<input type="hidden" class="form-control" name="id" id="deleteId">
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<button type="button" data-bs-dismiss="modal"class="btn btn-danger">Cancel</button>
+												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Hapus User</button>
+											</div>
+										</div>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -267,3 +210,24 @@
 			</div>
 	</main>
 
+<script>
+$(document).ready(() => {
+	$('body').on('click', '.btnDelete', function() {
+		let nama = $(this).attr('nama');
+		let id = $(this).attr('id');
+
+		console.log(id)
+
+		$('#deleteName').html(nama);
+		$('#deleteId').val(id);
+	});
+
+	$('body').on('click', '.btnUpdate', function() {
+		let nama = $(this).attr('nama');
+		let id = $(this).attr('id');
+
+		$('#updateText').html(nama);
+		$('#updateId').val(id);
+	});
+})
+</script>

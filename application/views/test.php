@@ -9,6 +9,7 @@
 <body>
 	<h1>Ini Test</h1>
 <?php
+var_dump($test->nama); 
 // $conn = oci_connect('kp', 'kp', 'localhost/XE');
 // if (!$conn) {
 //     $e = oci_error();
@@ -27,5 +28,15 @@
 
 // var_dump($res);
 ?>
+<form action="<?= base_url() ?>UserAPI" method="get">
+	<input type="text" name="id">
+	<input type="text" name="new">
+	<button type="submit">test</button>
+</form>
+<form action="<?= base_url() ?>UserAPI" method="get">
+	<input type="text" name="id">
+	
+	<button type="submit">test</button>
+</form>
 </body>
 </html>

@@ -18,13 +18,27 @@
 						</nav>
 					</div>
 				</div>
+				<div class="col">
+					<button
+						style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;"
+						data-bs-toggle="modal" data-bs-target="#sesiModal">Update</button>
+				</div>
 			</div>
-			<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;"
-				type="submit">Update</button>
 			<div class="col-lg-15">
 				<div class="card card-carousel overflow-hidden h-100 p-0">
-					<h4 style="text-align: center;">Session 1</h4>
-					<h5 style="text-align: center;">2 Februari 2023 - 2 Maret 2023</h5>
+					<?php 
+						$panjang = count($sesiAktif);
+						if ($panjang <= 0) {
+							echo "<h4 style='text-align: center;'>Tidak Ada Session Yang Sedang Aktif</h4>";
+							echo "<h5 style='text-align: center;'>Pilih Session Terlebih Dahulu</h5>";
+						}else{
+							$sesi = $sesiAktif[0];
+							echo "<h4 style='text-align: center;'>".$sesi->NAMA."</h4>";
+							echo "<h5 style='text-align: center;'>".$sesi->MULAI." - ".$sesi->AKHIR."</h5>";
+						}  
+					?>
+					<!-- <h4 style="text-align: center;">Session 1</h4>
+					<h5 style="text-align: center;">2 Februari 2023 - 2 Maret 2023</h5> -->
 				</div>
 			</div>
 			<br>
@@ -92,4 +106,32 @@
 						</div>
 					</div>
 	</main>
+</div>
+
+<!-- Modal Ganti Session -->
+<div class="modal fade" id="sesiModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">Pilih Sesi</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form action="<?= base_url('dashboard/updateSesi') ?>" method="post">
+				<div class="modal-body">
+					<select name="sesi" class="form-control">
+						<option value="-1" selected disabled>Pilih Sesi</option>
+						<?php 
+						foreach ($listSesi as $key => $value) { ?>
+							<option value="<?=$value->ID?>"><?=$value->NAMA?></option>
+						<?php }
+						?>
+					</select>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Ganti Sesi</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>

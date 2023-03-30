@@ -20,7 +20,12 @@ class Test extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('test');
+		$this->load->model('TestModel');
+		$item = $this->TestModel->get("ini sudah jalan");
+		$item->nama = "fixed";
+		$item->save();
+		$data['test'] = $item;
+		$this->load->view('test', $data);
 	}
 
 	public function api()

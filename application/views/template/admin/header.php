@@ -20,6 +20,17 @@
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="assets/css/punyaadmin.css">
 	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+	
+	<!-- UNTUK ALERT -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" />
+	<!-- END OF UNTUK ALERT -->
+	
+	<!-- DataTables -->
+	<link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+	<!-- END OF DataTables -->
 </head>
 
 <body>
@@ -65,12 +76,12 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link " href="<?= base_url('department') ?>">
+								<a class="nav-link " href="<?= base_url('divisi') ?>">
 									<div
 										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
 										<i class="fas fa-building text-warning text-sm opacity-10"></i>
 									</div>
-									<span class="nav-link-text ms-1">Master Department</span>
+									<span class="nav-link-text ms-1">Master Divisi</span>
 								</a>
 							</li>
 							<li class="nav-item">
@@ -92,7 +103,7 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link " href="<?= base_url('session') ?>">
+								<a class="nav-link " href="<?= base_url('sesi') ?>">
 									<div
 										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
 										<i class="fas fa-globe text-danger text-sm opacity-10"></i>
@@ -115,3 +126,9 @@
 				</div>
 			</nav>
 		</div>
+
+		<div>
+		<?php
+		$this->load->view('alert');
+		?>
+    	</div>
