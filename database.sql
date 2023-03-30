@@ -11,7 +11,7 @@ DROP TABLE SETTINGS CASCADE CONSTRAINT PURGE;
 CREATE TABLE M_USER 
 (
     ID NUMBER(10) PRIMARY KEY,
-    DIVISI VARCHAR2(100) NOT NULL,
+    DIVISI VARCHAR2(20) NOT NULL,
     NAMA VARCHAR2(200) NOT NULL,
     USERNAME VARCHAR2(200) NOT NULL,
     PASSWORD VARCHAR2(200) NOT NULL,
@@ -21,8 +21,7 @@ CREATE TABLE M_USER
 
 CREATE TABLE M_DIVISI
 (
-    ID NUMBER(10) PRIMARY KEY,
-    ALIAS VARCHAR2(100),
+    ALIAS VARCHAR2(20) PRIMARY KEY,
     NAMA VARCHAR2(200) NOT NULL
 );
 
@@ -45,8 +44,8 @@ CREATE TABLE R_PROFILE
 (
     ID NUMBER(10) PRIMARY KEY,
     ID_SESSION NUMBER(10),
-    DIVISI_TANYA NUMBER(10),
-    DIVISI_DITANYA NUMBER(10)
+    DIVISI_TANYA VARCHAR2(20),
+    DIVISI_DITANYA VARCHAR2(20)
 );
 
 CREATE TABLE R_PERTANYAAN
@@ -123,18 +122,62 @@ BEGIN
 END;
 /
 
--- AUTO INCREMENT DIVISI
-DROP SEQUENCE divisi_id_seq;
-DROP TRIGGER divisi_bi;
+-- AUTO INCREMENT PROFILE
+DROP SEQUENCE profile_id_seq;
+DROP TRIGGER profile_bi;
 
-CREATE SEQUENCE divisi_id_seq;
-CREATE TRIGGER divisi_bi
-BEFORE INSERT ON M_DIVISI
+CREATE SEQUENCE profile_id_seq;
+CREATE TRIGGER profile_bi
+BEFORE INSERT ON R_PROFILE
 FOR EACH ROW
 BEGIN
-    SELECT divisi_id_seq.nextval
+    SELECT profile_id_seq.nextval
     INTO :new.ID
     FROM dual;
 END;
 /
 
+-- AUTO INCREMENT PERTANYAAN
+DROP SEQUENCE pertanyaan_id_seq;
+DROP TRIGGER pertanyaan_bi;
+
+CREATE SEQUENCE pertanyaan_id_seq;
+CREATE TRIGGER pertanyaan_bi
+BEFORE INSERT ON R_PERTANYAAN
+FOR EACH ROW
+BEGIN
+    SELECT pertanyaan_id_seq.nextval
+    INTO :new.ID
+    FROM dual;
+END;
+/
+
+-- AUTO INCREMENT DRESPONSE
+DROP SEQUENCE dresponse_id_seq;
+DROP TRIGGER dresponse_bi;
+
+CREATE SEQUENCE dresponse_id_seq;
+CREATE TRIGGER dresponse_bi
+BEFORE INSERT ON D_RESPONSE
+FOR EACH ROW
+BEGIN
+    SELECT dresponse_id_seq.nextval
+    INTO :new.ID
+    FROM dual;
+END;
+/
+
+-- Seeding
+insert into M_DIVISI (ALIAS, NAMA) values ('AS', 'Asahan');
+insert into M_DIVISI (ALIAS, NAMA) values ('KEU', 'Keuangan');
+
+insert into M_USER (DIVISI, NAMA, USERNAME, PASSWORD, ROLE, STATUS) values ('KEU', 'Calvin Adhikang', 'calvin', 'calvin', 1, 1);
+insert into M_USER (DIVISI, NAMA, USERNAME, PASSWORD, ROLE, STATUS) values ('KEU', 'Angeline Valencia', 'angel', 'angel', 1, 1);
+insert into M_USER (DIVISI, NAMA, USERNAME, PASSWORD, ROLE, STATUS) values ('AS', 'Ivander Wijaya', 'ivander', 'ivander', 1, 1);
+insert into M_USER (DIVISI, NAMA, USERNAME, PASSWORD, ROLE, STATUS) values ('ADMIN', 'Yuki Adhikang', 'yukibara', 'yukibara', 0, 1);
+
+insert into M_PERTANYAAN values (1, 'Berapa tingkat kepuasan terhadap divisi ini ?');
+insert into M_PERTANYAAN values (2, 'Berapa tingkat kecepatan pelayanan divisi ini ?');
+insert into M_PERTANYAAN values (3, 'Berapa tingkat tingkat kekompakan divisi ini ?');
+
+commit;

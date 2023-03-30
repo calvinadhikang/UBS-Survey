@@ -18,20 +18,20 @@ class DivisiModel extends CI_Model {
         }
     }
 
-    public function delete($id)
+    public function delete($alias)
     {
-        $query = $this->db->query("DELETE FROM $this->table_name WHERE ID = $id");
+        $query = $this->db->query("DELETE FROM $this->table_name WHERE ALIAS = '$alias'");
     }
 
-    public function get($id = null){
-        if ($id === null) {
+    public function get($alias = null){
+        if ($alias === null) {
             return $this->db->get($this->table_name)->result();
         }else{
-            return $this->db->get_where($this->table_name, ['ID' => $id])->result();
+            return $this->db->get_where($this->table_name, ['ALIAS' => $alias])->result();
         }
     }
 
-    public function update($id, $alias, $nama){
+    public function update($old, $alias, $nama){
         if ($this->duplicate($alias)) {
             return FALSE;
         }else{
@@ -39,7 +39,7 @@ class DivisiModel extends CI_Model {
                 'ALIAS' => $alias,
                 'NAMA' => $nama
             );
-            $this->db->where('ID', $id);
+            $this->db->where('ALIAS', $old);
             $this->db->update($this->table_name, $data);
 
             return TRUE;
@@ -55,5 +55,10 @@ class DivisiModel extends CI_Model {
         } else {
             return FALSE;
         }
+    }
+    
+    public function getKaryawan($alias)
+    {
+        return $this->db->get_where("M_USER", ['DIVISI' => $alias])->result();
     }
 }

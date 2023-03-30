@@ -32,7 +32,12 @@ class SesiModel extends CI_Model {
     }
 
     public function getActive(){
-        return $this->db->get_where($this->table_name, ['STATUS' => 1])->result();
+        $query = $this->db->get_where($this->table_name, ['STATUS' => 1])->result();
+        if (count($query) > 0) {
+            return $query[0];
+        }else{
+            return null;
+        }
     }
 
     public function save(){

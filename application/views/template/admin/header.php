@@ -9,16 +9,16 @@
 	<!--     Fonts and icons     -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 	<!-- Nucleo Icons -->
-	<link href="assets/css/nucleo-icons.css" rel="stylesheet" />
-	<link href="assets/css/nucleo-svg.css" rel="stylesheet" />
+	<link href="<?=base_url('assets/css/nucleo-icons.css')?>" rel="stylesheet" />
+	<link href="<?=base_url('assets/css/nucleo-svg.css')?>" rel="stylesheet" />
 	<!-- Font Awesome Icons -->
 	<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-	<link href="assets/css/nucleo-svg.css" rel="stylesheet" />
+	<link href="<?=base_url('assets/css/nucleo-svg.css')?>" rel="stylesheet" />
 	<!-- CSS Files -->
-	<link id="pagestyle" href="assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+	<link id="pagestyle" href="<?=base_url('assets/css/argon-dashboard.css?v=2.0.4')?>" rel="stylesheet" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="assets/css/punyaadmin.css">
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/punyaadmin.css')?>">
 	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 	
 	<!-- UNTUK ALERT -->
@@ -58,7 +58,7 @@
 						<a class="navbar-brand m-5" target="_blank">
 							<i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
 								aria-hidden="true" id="iconSidenav"></i>
-							<img src="assets/img/LogoUbs.png" class="navbar-brand-img h-100" width="150px"
+							<img src="<?= base_url('assets/img/LogoUbs.png')?>" class="navbar-brand-img h-100" width="150px"
 								height="200px" alt="main_logo">
 							<br><br>
 							<div

@@ -27,14 +27,12 @@
 			<div class="col-lg-15">
 				<div class="card card-carousel overflow-hidden h-100 p-0">
 					<?php 
-						$panjang = count($sesiAktif);
-						if ($panjang <= 0) {
+						if ($sesiAktif) {
+							echo "<h4 style='text-align: center;'>".$sesiAktif->NAMA."</h4>";
+							echo "<h5 style='text-align: center;'>".$sesiAktif->MULAI." - ".$sesiAktif->AKHIR."</h5>";
+						}else{
 							echo "<h4 style='text-align: center;'>Tidak Ada Session Yang Sedang Aktif</h4>";
 							echo "<h5 style='text-align: center;'>Pilih Session Terlebih Dahulu</h5>";
-						}else{
-							$sesi = $sesiAktif[0];
-							echo "<h4 style='text-align: center;'>".$sesi->NAMA."</h4>";
-							echo "<h5 style='text-align: center;'>".$sesi->MULAI." - ".$sesi->AKHIR."</h5>";
 						}  
 					?>
 					<!-- <h4 style="text-align: center;">Session 1</h4>
