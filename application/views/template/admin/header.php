@@ -44,7 +44,7 @@
 		<!-- Navbar Search-->
 		<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
 			<div class="input-group">
-				<h3 style="color: white;">Welcome, Admin</h3>
+				<h3 style="color: black;">Welcome, Admin</h3>
 			</div>
 		</form>
 	</nav>
@@ -58,8 +58,8 @@
 						<a class="navbar-brand m-5" target="_blank">
 							<i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
 								aria-hidden="true" id="iconSidenav"></i>
-							<img src="<?= base_url('assets/img/LogoUbs.png')?>" class="navbar-brand-img h-100" width="150px"
-								height="200px" alt="main_logo">
+							<img src="<?= base_url("assets/img/logoubsnew.png") ?>" class="navbar-brand-img h-100" width="150px"
+								height="200px" alt="main_logo" style="border-radius:7px;">
 							<br><br>
 							<div
 								style="border: 2px solid #004882; background-color: #004882; border-radius: 7px; text-align:center;">
