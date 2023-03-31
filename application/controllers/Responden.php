@@ -8,6 +8,9 @@ class Responden extends CI_Controller {
 		parent::__construct();
 		$this->load->model('SesiModel', 'Sesi');
         $this->load->model('UserModel', "User");
+        $this->load->model('ProfileModel', "Profile");
+        $this->load->model('DivisiModel', "Divisi");
+        $this->load->model('PertanyaanModel', "Pertanyaan");
 	}
 
 	public function index()
@@ -18,23 +21,27 @@ class Responden extends CI_Controller {
 
 		$data['sesiAktif'] = $sesi;
         $data['user'] = $user;
-        $data['survey'] = $survey;
+		$this->session->set_userdata('survey', $survey);
 
-		$this->load->view('template/responden/header', $data);
+		$this->load->view('template/responden/header');
 		$this->load->view('responden/dashboard', $data);
 		$this->load->view('template/responden/footer');
 	}
 
-	public function updateSesi()
+	public function survey()
 	{
-		$id = $this->input->post('sesi');
+		$idProfile = $this->input->get('quiz');
 
-		$success = $this->Sesi->setActive($id);
-		if ($success) {
-			$this->toastr->success('Berhasil Set Session');
-		}else{
-			$this->toastr->error('Gagal Set Session');
-		}
-		return redirect(base_url('dashboard'));
+		$profile = $this->Profile->get($idProfile);
+		$tanya = $this->Divisi->get($profile->DIVISI_TANYA);
+		$pertanyaan = $this->Pertanyaan->getPertanyaanSurveyor($idProfile);
+		
+		$data['pertanyaan'] = $pertanyaan;
+		$data['profile'] = $profile;
+		$data['divisi'] = $tanya;
+
+		$this->load->view('template/responden/header');
+		$this->load->view('responden/survey', $data);
+		$this->load->view('template/responden/footer');
 	}
 }

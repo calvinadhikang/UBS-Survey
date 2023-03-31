@@ -31,6 +31,15 @@ class ProfileModel extends CI_Model {
         return TRUE;
     }
 
+    public function get($id = null)
+    {
+        if ($id === null) {
+            return $this->db->get($this->table_name)->result();
+        }else{
+            return $this->db->get_where("R_PROFILE", ['ID' => $id,])->result()[0];
+        }
+    }
+
     public function getProfile($idSession, $idDitanya, $idTanya = null)
     {
         if ($idTanya == null) {

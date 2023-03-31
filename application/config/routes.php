@@ -65,6 +65,9 @@ $route['divisi/detail/surveyor'] = 'divisi/viewSurveyor';
 $route['divisi/detail/surveyor/add'] = 'divisi/addPertanyaan';
 $route['divisi/(:any)'] = 'divisi/detail/$id';
 
+$route['survey'] = 'responden/survey';
+
+
 $route['session'] = 'sesi';
 
 $route['testAPI'] = 'test/api';

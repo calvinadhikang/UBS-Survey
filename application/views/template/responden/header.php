@@ -33,7 +33,8 @@
 	<!-- END OF DataTables -->
 </head>
 <?php
-	
+	$user = $this->session->login;
+	$survey = $this->session->survey;
 ?>
 <body>
 
@@ -68,55 +69,28 @@
 								<h5 style="color: white;"><?= $user->NAMA ?></h5>
 								<h7 style="color: white;"><?= $user->DIVISI ?></h7>
 							</div>
+							<li class="nav-item">
+								<a class="nav-link active" href="<?= base_url('responden') ?>">
+									<div
+										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+										<i class="fas fa-table text-primary text-sm opacity-10"></i>
+									</div>
+									<span class="nav-link-text ms-1">Dashboard</span>
+								</a>
+							</li>
 							<?php
 							foreach ($survey as $key => $value) { ?>
 								<li class="nav-item">
-									<a class="nav-link active" href="<?= base_url('responden?quiz='.$value->ALIAS) ?>">
+									<a class="nav-link active" href="<?= base_url('survey?quiz='.$value->ID_PROFILE) ?>">
 										<div
 											class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-											<i class="fas fa-table text-primary text-sm opacity-10"></i>
+											<i class="fas fa-times text-primary text-sm opacity-10"></i>
 										</div>
 										<span class="nav-link-text ms-1"><?= $value->NAMA ?></span>
 									</a>
 								</li>
 							<?php } ?>
-							<!-- <li class="nav-item">
-								<a class="nav-link " href="<?= base_url('divisi') ?>">
-									<div
-										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-										<i class="fas fa-building text-warning text-sm opacity-10"></i>
-									</div>
-									<span class="nav-link-text ms-1">Master Divisi</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link " href="<?= base_url('user') ?>">
-									<div
-										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-										<i class="fas fa-users text-success text-sm opacity-10"></i>
-									</div>
-									<span class="nav-link-text ms-1">Master User</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link " href="<?= base_url('pertanyaan') ?>">
-									<div
-										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-										<i class="fas fa-clipboard text-info text-sm opacity-10"></i>
-									</div>
-									<span class="nav-link-text ms-1">Master Pertanyaan</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link " href="<?= base_url('sesi') ?>">
-									<div
-										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-										<i class="fas fa-globe text-danger text-sm opacity-10"></i>
-									</div>
-									<span class="nav-link-text ms-1">Master Session</span>
-								</a>
-							</li>
-							<br><br><br><br> -->
+							<br><br><br><br> 
 							<li class="nav-item">
 								<a class="nav-link " href="<?= base_url() ?>">
 									<div

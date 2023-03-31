@@ -82,7 +82,9 @@ class UserModel extends CI_Model {
         $query = $this->db->query("SELECT * FROM R_PROFILE WHERE ID_SESSION = $idSession AND DIVISI_TANYA = '$divisiTanya'")->result();
         $data = [];
         foreach ($query as $key => $value) {
-            $data[] = $this->Divisi->get($value->DIVISI_DITANYA);
+            $row = $this->Divisi->get($value->DIVISI_DITANYA);
+            $row->ID_PROFILE = $value->ID;
+            $data[] = $row;
         }
         return $data;
     }
