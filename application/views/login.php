@@ -72,6 +72,10 @@
 											<input type="text" class="form-control" placeholder="Enter Your Username" name="username"
 												style="border: 1px solid black;">
 											<br>
+											<label for="username">Password</label>
+											<input type="text" class="form-control" placeholder="Enter Your Password" name="password"
+												style="border: 1px solid black;">
+											<br>
 											<button type="submit" class="btn btn-block btn-primary">Login</button>
 										</div>
 										<br><br><br><br><br>

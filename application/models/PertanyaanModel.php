@@ -53,4 +53,31 @@ class PertanyaanModel extends CI_Model {
             return FALSE;
         }
     }
+
+    public function getPertanyaanSurveyor($idProfile)
+    {
+        $result = $this->db->get_where("R_PERTANYAAN", ['ID_PROFILE' => $idProfile])->result();
+        $data = [];
+        if (count($result) > 0) {
+            foreach ($result as $key => $value) {
+                $data[] = $this->Pertanyaan->get($value->ID_PERTANYAAN)[0];
+            }
+        }
+        return $data;
+    }
+
+    public function addPertanyaanSurveyor($idPertanyaan, $idProfile)
+    {
+        $result = $this->db->get_where("R_PERTANYAAN", ['ID_PROFILE' => $idProfile, 'ID_PERTANYAAN' => $idPertanyaan])->result();
+        if (count($result) > 0) {
+            return false;
+        }
+        
+        $data = array(
+            'ID_PROFILE' => $idProfile,
+            'ID_PERTANYAAN' => $idPertanyaan
+        );
+        $this->db->insert("R_PERTANYAAN", $data);
+        return true;
+    }
 }

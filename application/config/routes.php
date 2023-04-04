@@ -54,7 +54,20 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['test'] = 'test';
+
 $route['dashboard'] = 'dashboard';
+
+$route['divisi/add'] = 'divisi/add';
+$route['divisi/update'] = 'divisi/update';
+$route['divisi/delete'] = 'divisi/delete';
+$route['divisi/add/surveyor'] = 'divisi/addSurveyor';
+$route['divisi/detail/surveyor'] = 'divisi/viewSurveyor';
+$route['divisi/detail/surveyor/add'] = 'divisi/addPertanyaan';
+$route['divisi/(:any)'] = 'divisi/detail/$id';
+
+$route['survey'] = 'responden/survey';
+
+
 $route['session'] = 'sesi';
 
 $route['testAPI'] = 'test/api';
