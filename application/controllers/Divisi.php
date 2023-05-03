@@ -108,29 +108,51 @@ class Divisi extends CI_Controller {
 
 	public function viewSurveyor()
 	{
-		$alias = $this->input->get('alias');
-		$parent = $this->input->get('parent');
+		$surveyor = $this->input->get('surveyor');
+		$target = $this->input->get('target');
 
 		$this->load->model('SesiModel', 'Sesi');	
 		$this->load->model('ProfileModel', 'Profile');	
 		$this->load->model('PertanyaanModel', 'Pertanyaan');	
 
 		$sesi = $this->Sesi->getActive();
-		$profile = $this->Profile->getProfile($sesi->ID, $parent, $alias);
-		$tanya = $this->Divisi->get($alias);
-		$ditanya = $this->Divisi->get($parent);
+		$profile = $this->Profile->getProfile($sesi->ID, $target, $surveyor);
+		$tanya = $this->Divisi->get($surveyor);
+		$ditanya = $this->Divisi->get($target);
 		$pertanyaan = $this->Pertanyaan->getPertanyaanSurveyor($profile->ID);
-		$allPertanyaan = $this->Pertanyaan->get();
 
 		$data['sesi'] = $sesi;
 		$data['profile'] = $profile;
 		$data['tanya'] = $tanya;
 		$data['ditanya'] = $ditanya;
 		$data['pertanyaan'] = $pertanyaan;
-		$data['allPertanyaan'] = $allPertanyaan;
 
 		$this->load->view('template/admin/header');
 		$this->load->view('admin/divisi/surveyor', $data);
+		$this->load->view('template/admin/footer');
+	}
+
+	public function viewPertanyaanSurveyor()
+	{
+		$surveyor = $this->input->get('surveyor');
+		$target = $this->input->get('target');
+
+		$this->load->model('SesiModel', 'Sesi');	
+		$this->load->model('ProfileModel', 'Profile');	
+		$this->load->model('PertanyaanModel', 'Pertanyaan');
+		
+		$sesi = $this->Sesi->getActive();
+		$profile = $this->Profile->getProfile($sesi->ID, $target, $surveyor);
+		$tanya = $this->Divisi->get($surveyor);
+		$ditanya = $this->Divisi->get($target);
+
+		$data['sesi'] = $sesi;
+		$data['profile'] = $profile;
+		$data['tanya'] = $tanya;
+		$data['ditanya'] = $ditanya;
+		
+		$this->load->view('template/admin/header');
+		$this->load->view('admin/divisi/pertanyaanSurveyor', $data);
 		$this->load->view('template/admin/footer');
 	}
 

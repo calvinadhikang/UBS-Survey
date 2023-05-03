@@ -108,7 +108,7 @@
 				<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
 					<div class="container-fluid py-1 px-3">
 						<nav aria-label="breadcrumb">
-							<h3 class="font-weight-bolder text-black mb-0">Tabel Peng-Survey</h3>
+							<h3 class="font-weight-bolder text-black mb-0">Tabel Surveyor</h3>
 						</nav>
 					</div>
 				</div>
@@ -148,7 +148,7 @@
 													<span class="text-secondary text-xs font-weight-bold"><?= $value->NAMA ?></span>
 												</td>
 												<td>
-													<a href="<?= base_url("divisi/detail/surveyor?alias=".$value->ALIAS."&parent=".$divisi->ALIAS) ?>">
+													<a href="<?= base_url("divisi/detail/surveyor?surveyor=".$value->ALIAS."&target=".$divisi->ALIAS) ?>">
 														<button class="btn btn-info">Lihat Pertanyaan</button>
 													</a>
 												</td>

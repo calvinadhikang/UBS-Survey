@@ -15,7 +15,7 @@ class UserAPI extends RestController{
         $id = $this->get('id');
         if ($id === null) {
             $query = $this->db->query("SELECT * FROM TEST");
-            $row = $query->result_array();
+            $row = $query->result();
         }else{
             $data = array(
                 'NAMA' => $this->get('new')
@@ -24,11 +24,11 @@ class UserAPI extends RestController{
             $this->db->update('TEST', $data);
 
             $query = $this->db->query("SELECT * FROM TEST WHERE NAMA = '$id'");
-            $row = $query->result_array();
+            $row = $query->result();
         }
 
         $this->response($row, RestController::HTTP_OK);
-    }
+    }   
 }
 
 ?>

@@ -1,4 +1,7 @@
 <?php
+
+use PhpParser\Node\Stmt\TryCatch;
+
 class PertanyaanModel extends CI_Model {
 
     public $table_name = "M_PERTANYAAN";
@@ -78,6 +81,12 @@ class PertanyaanModel extends CI_Model {
             'ID_PERTANYAAN' => $idPertanyaan
         );
         $this->db->insert("R_PERTANYAAN", $data);
+        return true;
+    }
+
+    public function resetPertanyaanSurveyor($idProfile)
+    {
+        $this->db->delete('R_PERTANYAAN', ['ID_PROFILE' => $idProfile]);
         return true;
     }
 }
