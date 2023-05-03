@@ -40,6 +40,8 @@
 	<nav class="sb-topnav navbar">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="<?= base_url('dashboard') ?>" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Untung Bersama Sejahtera</a>
+		<!-- <img src="<?= base_url("assets/img/logoubsnew.png") ?>" class="navbar-brand-img h-100" width="150px"
+		height="200px" alt="main_logo" style="border-radius:7px;"> -->
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
 				class="fas fa-bars"></i></button>
@@ -60,9 +62,7 @@
 						<a class="navbar-brand my-4 mx-3" target="_blank">
 							<i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
 								aria-hidden="true" id="iconSidenav"></i>
-							<!-- <img src="<?= base_url("assets/img/logoubsnew.png") ?>" class="navbar-brand-img h-100" width="150px"
-								height="200px" alt="main_logo" style="border-radius:7px;">
-							<br><br> -->
+							<br><br>
 							<div
 								style="border: 2px solid #004882; background-color: #004882; border-radius: 7px; text-align:center;">
 								<h5 style="color: white;"><?= $user->NAMA ?></h5>
@@ -118,7 +118,7 @@
 								<a class="nav-link " href="<?= base_url() ?>">
 									<div
 										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-										<i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+										<i class="fa fa-sign-out text-danger text-sm opacity-10"></i>
 									</div>
 									<span class="nav-link-text ms-1">Logout</span>
 								</a>
