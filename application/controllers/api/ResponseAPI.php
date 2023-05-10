@@ -11,11 +11,6 @@ class ResponseAPI extends RestController{
         $this->load->model("ResponseModel");
     }
 
-    public function index_get()
-    {
-
-    }
-
     public function index_post()
     {
         $data = $this->post('data') ?? "";
@@ -35,7 +30,7 @@ class ResponseAPI extends RestController{
         if ($result == true) {
             $this->response([
                 'error' => false,
-                'message' => "Berhasil insert"
+                'message' => "Berhasil insert: $result"
             ], RestController::HTTP_CREATED);
         }else{
             $this->response([

@@ -15,8 +15,8 @@ class ResponseModel extends CI_Model {
             $this->db->trans_start();
             // Insert Header
             $this->db->insert($this->header_table, $dataHeader);
-            $lastId = $this->db->query("select max(id) as lastId from m_session")->result();
-            $lastId = $lastId[0]->LASTID+1;
+            $lastQuery = $this->db->query("select max(id) as lastId from h_response")->result();
+            $lastId = (int)$lastQuery[0]->LASTID;
             
             // Insert Detail
             foreach ($dataResponse as $key => $value) {
@@ -31,7 +31,7 @@ class ResponseModel extends CI_Model {
 
 
             $this->db->trans_complete();
-            return true;
+            return $lastId;
         } catch (\Exception $e) {
             return $e->getMessage();
         }

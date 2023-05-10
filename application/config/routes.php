@@ -76,10 +76,8 @@ $route['responden'] = 'responden';
 
 // API ROUTES
 $route['api/user'] = 'api/UserAPI';
-
+$route['api/response'] = 'api/ResponseAPI';
+$route['api/survey'] = 'api/SurveyAPI';
+$route['api/laporan'] = 'api/LaporanAPI';
 $route['api/pertanyaan'] = 'api/PertanyaanAPI';
 $route['api/pertanyaan/surveyor'] = 'api/PertanyaanSurveyorAPI';
-
-$route['api/response'] = 'api/ResponseAPI';
-
-$route['api/survey'] = 'api/SurveyAPI';

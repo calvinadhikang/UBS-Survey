@@ -7,12 +7,14 @@ class Dashboard extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('SesiModel', 'Sesi');	
+		$this->load->model('DivisiModel', 'Divisi');	
 	}
 
 	public function index()
 	{
 		$data['sesiAktif'] = $this->Sesi->getActive();
 		$data['listSesi'] = $this->Sesi->get();
+		$data['divisi'] = $this->Divisi->get();
 
 		$this->load->view('template/admin/header');
 		$this->load->view('admin/dashboard', $data);

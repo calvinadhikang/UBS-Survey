@@ -1,10 +1,13 @@
 <div class="p-3 w-100">
     <h1 class="text-center fw-bold">Menjawab Survey <?= $divisi->NAMA ?></h1>
     <br>
-    <div id="body"></div>
-    
-    <br>
-    <button class="btn btn-primary mx-4" id="submit">Kirim Jawaban Survey</button>
+    <div class="d-flex justify-content-center">
+        <div class="margin-auto">
+            <div id="body"></div>
+            <br>
+            <button class="btn btn-primary mx-4" id="submit">Kirim Jawaban Survey</button>
+        </div>
+    </div>
 </div>
 
 <!-- Toast -->

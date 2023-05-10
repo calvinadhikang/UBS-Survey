@@ -31,6 +31,9 @@
 	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 	<!-- END OF DataTables -->
+
+	<!-- CanvasJS -->
+	<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 </head>
 <?php
 	$user = $_SESSION['login'];

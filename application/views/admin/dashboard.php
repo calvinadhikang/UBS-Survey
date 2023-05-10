@@ -24,85 +24,59 @@
 						data-bs-toggle="modal" data-bs-target="#sesiModal">Update</button>
 				</div>
 			</div>
-			<div class="col-lg-15">
-				<div class="card card-carousel overflow-hidden h-100 p-0">
-					<?php 
-						if ($sesiAktif) {
-							echo "<h4 style='text-align: center;'>".$sesiAktif->NAMA."</h4>";
-							echo "<h5 style='text-align: center;'>".$sesiAktif->MULAI." - ".$sesiAktif->AKHIR."</h5>";
-						}else{
-							echo "<h4 style='text-align: center;'>Tidak Ada Session Yang Sedang Aktif</h4>";
-							echo "<h5 style='text-align: center;'>Pilih Session Terlebih Dahulu</h5>";
-						}  
-					?>
-					<!-- <h4 style="text-align: center;">Session 1</h4>
-					<h5 style="text-align: center;">2 Februari 2023 - 2 Maret 2023</h5> -->
-				</div>
-			</div>
-			<br>
-			<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-				<div class="container-fluid py-1 px-3">
-					<nav aria-label="breadcrumb">
-						<h3 class="font-weight-bolder text-white mb-0">Laporan Singkat Nilai Survey</h3>
-					</nav>
-				</div>
-			</div>
-			<div class="row mt-4">
-				<div class="col-lg-7 mb-lg-0 mb-4">
-					<div class="card z-index-2 h-100">
-						<div class="card-header pb-0 pt-3 bg-transparent">
-							<h6 class="text-capitalize">Nilai Survey</h6>
-							<p class="text-sm mb-0">
-								<i class="fa fa-arrow-up text-success"></i>
-								<span class="font-weight-bold">4% more</span> in 2021
-							</p>
-						</div>
-						<div class="card-body p-3">
-							<div class="chart">
-								<canvas id="chart-line" class="chart-canvas" height="300"></canvas>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-5">
+			<div class="row">
+				<div class="col-lg-15">
 					<div class="card card-carousel overflow-hidden h-100 p-0">
-						<h3>Isinya Chart Nanti</h3>
+						<?php 
+							if ($sesiAktif) {
+								echo "<h4 style='text-align: center;'>".$sesiAktif->NAMA."</h4>";
+								echo "<h5 style='text-align: center;'>".$sesiAktif->MULAI." - ".$sesiAktif->AKHIR."</h5>";
+							}else{
+								echo "<h4 style='text-align: center;'>Tidak Ada Session Yang Sedang Aktif</h4>";
+								echo "<h5 style='text-align: center;'>Pilih Session Terlebih Dahulu</h5>";
+							}  
+						?>
+						<!-- <h4 style="text-align: center;">Session 1</h4>
+						<h5 style="text-align: center;">2 Februari 2023 - 2 Maret 2023</h5> -->
 					</div>
 				</div>
-				<br>
-				<br>
-				<br>
-				<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-					<div class="container-fluid py-1 px-3">
-						<nav aria-label="breadcrumb">
-							<h3 class="font-weight-bolder text-black mb-0">Laporan Responden</h3>
-						</nav>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="d-flex justify-content-between">
+				<div class="col-5 border rounded shadow-sm p-4">
+					<div class="row">
+						<div class="col">
+							<h4>Laporan Grade</h4>
+						</div>
+						<div class="col text-end">
+							<select id="filterGrade" class="form-control">
+								<option value="">Semua Divisi</option>
+								<?php foreach ($divisi as $key => $value) { ?>
+									<option value="<?= $value->ALIAS ?>"><?= $value->NAMA ?></option>
+								<?php } ?>
+							</select>
+						</div>
 					</div>
+					<hr>
+					<div id="chartGrade" style="height: 370px; width: 100%;"></div>
 				</div>
-				<div class="row">
-					<div class="row mt-4">
-						<div class="col-lg-7 mb-lg-0 mb-4">
-							<div class="card z-index-2 h-100">
-								<div class="card-header pb-0 pt-3 bg-transparent">
-									<h6 class="text-capitalize">Nilai Responden</h6>
-									<p class="text-sm mb-0">
-										<i class="fa fa-arrow-up text-success"></i>
-										<span class="font-weight-bold">4% more</span> in 2021
-									</p>
-								</div>
-								<div class="card-body p-3">
-									<div class="chart">
-										<canvas id="chart-line" class="chart-canvas" height="300"></canvas>
-									</div>
-								</div>
-							</div>
+				<div class="col-5 border rounded shadow-sm p-4">
+					<div class="row">
+						<div class="col">
+							<h4>Laporan Completion</h4>
 						</div>
-						<div class="col-lg-5">
-							<div class="card card-carousel overflow-hidden h-100 p-0">
-								<h3>Isinya Chart Nanti</h3>
-							</div>
+						<div class="col text-end">
+							<select name="" id="" class="form-control">
+								<option value="">Semua Divisi</option>
+							</select>
 						</div>
 					</div>
+					<hr>
+					<div id="chartCompletion" style="height: 370px; width: 100%;"></div>
+				</div>
+			</div>
+		</div>
 	</main>
 </div>
 
@@ -120,7 +94,7 @@
 						<option value="-1" selected disabled>Pilih Sesi</option>
 						<?php 
 						foreach ($listSesi as $key => $value) { ?>
-							<option value="<?=$value->ID?>"><?=$value->NAMA?></option>
+						<option value="<?=$value->ID?>"><?=$value->NAMA?></option>
 						<?php }
 						?>
 					</select>
@@ -133,3 +107,64 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	$('#filterGrade').on('change', (e) => {
+		let divisi = e.target.value;
+		console.log(divisi);
+
+		generateLaporanGrade(divisi)
+	})
+
+	generateLaporanGrade = (divisi = "") => {
+		let sesi = "<?= $sesiAktif->ID ?>";
+
+		let req = new Request(`<?= base_url() ?>api/laporan?type=grade&sesi=${sesi}&divisi=${divisi}`);
+		fetch(req)
+			.then((res) => res.json())
+			.then((res) => {
+				console.log(res)
+
+				let dataPoint = [];
+				res.data.forEach(element => {
+					dataPoint.push({name: `Point ${element.name}`, y: element.value});
+				});
+
+				let chartTitle = "Laporan Grade Semua Divisi";
+				if (divisi) {
+					chartTitle = `Laporan Grade Divisi ${divisi}`;
+				}
+				
+				var chart = new CanvasJS.Chart("chartGrade", {
+					exportEnabled: true,
+					animationEnabled: true,
+					title:{
+						text: chartTitle
+					},
+					legend:{
+						cursor: "pointer",
+						itemclick: explodePie
+					},
+					data: [{
+						type: "pie",
+						showInLegend: true,
+						toolTipContent: "{name}: <strong>{y}x</strong>",
+						indexLabel: "{name}: {y}x",
+						dataPoints: dataPoint
+					}]
+				});
+				chart.render();
+			})
+	}
+
+	function explodePie (e) {
+		if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+			e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+		} else {
+			e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+		}
+		e.chart.render();
+	}
+
+	generateLaporanGrade();
+</script>
