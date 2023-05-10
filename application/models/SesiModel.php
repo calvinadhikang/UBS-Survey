@@ -23,6 +23,21 @@ class SesiModel extends CI_Model {
         }
     }
 
+    public function update($id, $nama, $mulai, $akhir)
+    {
+        if ($mulai > $akhir) {
+            return 0;
+        }else{
+            $this->db->query("UPDATE $this->table_name SET 
+                NAMA='$nama', 
+                MULAI=TO_DATE('$mulai', 'YYYY-MM-DD'), 
+                AKHIR=TO_DATE('$akhir', 'YYYY-MM-DD')
+                WHERE ID = $id
+            ");
+            return 1;
+        }
+    }
+
     public function get($id = null){
         if ($id === null) {
             return $this->db->get($this->table_name)->result();

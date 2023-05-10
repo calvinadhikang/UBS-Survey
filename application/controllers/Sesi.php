@@ -32,4 +32,20 @@ class Sesi extends CI_Controller {
 		}
 		return redirect(base_url('sesi'));
 	}
+
+	public function update()
+	{
+		$id = $this->input->post('id') ?? "";
+		$nama = $this->input->post('nama') ?? "";
+		$mulai = $this->input->post('mulai') ?? "";
+		$akhir = $this->input->post('akhir') ?? "";
+
+		$result = $this->Sesi->update($id, $nama, $mulai, $akhir);
+		if ($result) {
+			$this->toastr->success('Success Update Session');
+		}else{
+			$this->toastr->error('Gagal Update Session, Tanggal MULAI tidak boleh lebih besar dari tanggal AKHIR');
+		}
+		return redirect(base_url('sesi'));
+	}
 }
