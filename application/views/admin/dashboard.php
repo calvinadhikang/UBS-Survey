@@ -57,6 +57,7 @@
 								<?php } ?>
 							</select>
 						</div>
+						<div class="spinner-border" role="status" id="loadingGrade"></div>
 					</div>
 					<hr>
 					<div id="chartGrade" style="height: 370px; width: 100%;"></div>
@@ -117,12 +118,14 @@
 	})
 
 	generateLaporanGrade = (divisi = "") => {
+		showLoadingGrade(true);
 		let sesi = "<?= $sesiAktif->ID ?>";
 
 		let req = new Request(`<?= base_url() ?>api/laporan?type=grade&sesi=${sesi}&divisi=${divisi}`);
 		fetch(req)
 			.then((res) => res.json())
 			.then((res) => {
+				showLoadingGrade(false);
 				console.log(res)
 
 				let dataPoint = [];
@@ -164,6 +167,14 @@
 			e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
 		}
 		e.chart.render();
+	}
+
+	showLoadingGrade = (status) => {
+		if (status) {
+			$('#loadingGrade').show();
+		}else {
+			$('#loadingGrade').hide();
+		}
 	}
 
 	generateLaporanGrade();
