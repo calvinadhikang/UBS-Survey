@@ -8,6 +8,7 @@
                         <h2>Surveyor</h2>
                         <h3 class="font-weight-bolder mb-0" style="color: #004882;">Divisi <?=$tanya->NAMA ?></h3>
                         <h6>Alias : <?= $tanya->ALIAS ?> </h6>
+
                     </div>
                     <div class="col">
                         <h2>Target Survey</h2>

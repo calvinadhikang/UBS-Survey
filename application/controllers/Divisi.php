@@ -70,6 +70,11 @@ class Divisi extends CI_Controller {
 		$sesi = $this->Sesi->getActive();
 		$surveyor = $this->Profile->getSurveyor($sesi->ID, $divisi->ALIAS);
 
+		if ($sesi == null) {
+			$this->toastr->error('Tidak ada Session / Sesi Survey yang Aktif. Silahkan ke Dashboard dan Pilih Sesi Survey');
+			return redirect($_SERVER['HTTP_REFERER']);
+		}
+
 		$data['divisi'] = $divisi;
 		$data['allDivisi'] = $allDivisi;
 		$data['count_karyawan'] = count($karyawan);
@@ -150,7 +155,7 @@ class Divisi extends CI_Controller {
 		$data['profile'] = $profile;
 		$data['tanya'] = $tanya;
 		$data['ditanya'] = $ditanya;
-		
+
 		$this->load->view('template/admin/header');
 		$this->load->view('admin/divisi/pertanyaanSurveyor', $data);
 		$this->load->view('template/admin/footer');

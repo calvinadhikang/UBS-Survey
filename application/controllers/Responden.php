@@ -17,11 +17,13 @@ class Responden extends CI_Controller {
 	{
         $user = $_SESSION['login'];
         $sesi = $this->Sesi->getActive();
-        $survey = $this->User->getSurvey($user->DIVISI, $sesi->ID);
+        $survey = $this->User->getSurvey($user->ID, $user->DIVISI, $sesi->ID);
 
 		$data['sesiAktif'] = $sesi;
         $data['user'] = $user;
-		$this->session->set_userdata('survey', $survey);
+
+		// Disimpan dalam session, untuk keperluan Data List Survey yang dijawab oleh Responden
+		$this->session->set_userdata('sesi', $sesi);
 
 		$this->load->view('template/responden/header');
 		$this->load->view('responden/dashboard', $data);
@@ -43,5 +45,10 @@ class Responden extends CI_Controller {
 		$this->load->view('template/responden/header');
 		$this->load->view('responden/survey', $data);
 		$this->load->view('template/responden/footer');
+	}
+
+	public function submitSurvey()
+	{
+
 	}
 }

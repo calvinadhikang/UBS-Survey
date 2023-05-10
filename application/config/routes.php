@@ -66,12 +66,20 @@ $route['divisi/detail/surveyor/pertanyaan'] = 'divisi/viewPertanyaanSurveyor';
 $route['divisi/detail/surveyor/add'] = 'divisi/addPertanyaan';
 $route['divisi/(:any)'] = 'divisi/detail/$id';
 
-$route['survey'] = 'responden/survey';
 
 
 $route['session'] = 'sesi';
 
+// RESPONDEN ROUTES
+$route['survey'] = 'responden/survey';
+$route['responden'] = 'responden';
+
 // API ROUTES
 $route['api/user'] = 'api/UserAPI';
+
 $route['api/pertanyaan'] = 'api/PertanyaanAPI';
 $route['api/pertanyaan/surveyor'] = 'api/PertanyaanSurveyorAPI';
+
+$route['api/response'] = 'api/ResponseAPI';
+
+$route['api/survey'] = 'api/SurveyAPI';

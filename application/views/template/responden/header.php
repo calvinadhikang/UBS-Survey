@@ -34,7 +34,7 @@
 </head>
 <?php
 	$user = $this->session->login;
-	$survey = $this->session->survey;
+	$sesi = $this->session->sesi;
 ?>
 <body>
 
@@ -78,18 +78,14 @@
 									<span class="nav-link-text ms-1">Dashboard</span>
 								</a>
 							</li>
-							<?php
-							foreach ($survey as $key => $value) { ?>
-								<li class="nav-item">
-									<a class="nav-link active" href="<?= base_url('survey?quiz='.$value->ID_PROFILE) ?>">
-										<div
-											class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-											<i class="fas fa-times text-primary text-sm opacity-10"></i>
-										</div>
-										<span class="nav-link-text ms-1"><?= $value->NAMA ?></span>
-									</a>
-								</li>
-							<?php } ?>
+							<br>
+							<div class=" mb-5 bg-white">
+								<h5 class="text-center">List Survey</h5>
+								<div id="listSurvey" class="h-50 overflow-auto p-2">
+									..Loading
+								</div>
+							</div>
+							
 							<br><br><br><br> 
 							<li class="nav-item">
 								<a class="nav-link " href="<?= base_url() ?>">
@@ -111,3 +107,57 @@
 		$this->load->view('alert');
 		?>
     	</div>
+
+<script>
+	let listSurvey = [];
+
+	getSurveyUser = () => {
+		let idUser = <?= $user->ID ?>;
+		let divisiUser = "<?= $user->DIVISI ?>";
+		let sesi = <?= $sesi->ID ?>;
+
+		let req = new Request(`<?= base_url() ?>/api/survey?user=${idUser}&divisi=${divisiUser}&sesi=${sesi}`);
+		fetch(req)
+			.then((res) => res.json())
+			.then((res) => {
+				console.log(res);
+
+				// sort listSurvey dari belum selesai
+				listSurvey = res.data.sort((a,b) => {
+					return a.FINISHED - b.FINISHED 
+				})
+
+				renderSurvey();
+			})
+	}
+
+	renderSurvey = () => {
+		let html = ""
+
+		listSurvey.forEach(element => {
+			let status = "active";
+			let logo = "fa-times text-danger"
+			let bg = "bg-white";
+			if (element.FINISHED) {
+				status = "disabled";
+				logo = "fa-check text-primary"
+				bg = "bg-light";
+			}
+
+			html += `
+			<li class="nav-item rounded shadow-sm mb-2 ${bg}">
+				<a class="nav-link ${status}" href="<?= base_url() ?>survey?quiz=${element.ID_PROFILE}">
+					<div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+					<i class="fas ${logo} text-sm opacity-10"></i>
+					</div>
+					<span class="nav-link-text ms-1">${element.NAMA}</span>
+				</a>
+			</li>
+			`
+		});
+
+		$('#listSurvey').html(html);
+	}
+
+	getSurveyUser();
+</script>

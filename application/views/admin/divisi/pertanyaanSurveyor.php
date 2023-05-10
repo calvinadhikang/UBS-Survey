@@ -11,6 +11,7 @@
                         <h2>Surveyor</h2>
                         <h3 class="font-weight-bolder mb-0" style="color: #004882;">Divisi <?=$tanya->NAMA ?></h3>
                         <h6>Alias : <?= $tanya->ALIAS ?> </h6>
+
                     </div>
                     <div class="col">
                         <h2>Target Survey</h2>
@@ -185,7 +186,7 @@
                 console.log(resp)
                 // Href ke halaman sebelumyna
                 if (!resp.error) {
-                    window.location.href = "<?= base_url()."divisi/detail/surveyor?surveyor=$tanya->ALIAS&target=$ditanya->ALIAS" ?>"
+                    window.location.href = "<?= base_url()."divisi/detail/surveyor?surveyor=$tanya->ALIAS&target=$ditanya->ALIAS&status=1" ?>"
                 }
             })
     })

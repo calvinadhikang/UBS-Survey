@@ -75,15 +75,27 @@ class UserModel extends CI_Model {
         }
     }
 
-    public function getSurvey($divisiTanya, $idSession)
+    public function getSurvey($idUser, $divisiUser, $idSession)
     {
         $this->load->model("DivisiModel", 'Divisi');
 
-        $query = $this->db->query("SELECT * FROM R_PROFILE WHERE ID_SESSION = $idSession AND DIVISI_TANYA = '$divisiTanya'")->result();
+        $hresponse = $this->db->query("SELECT * FROM H_RESPONSE WHERE ID_USER = $idUser")->result();
+        $query = $this->db->query("SELECT * FROM R_PROFILE WHERE ID_SESSION = $idSession AND DIVISI_TANYA = '$divisiUser'")->result();
         $data = [];
         foreach ($query as $key => $value) {
+            //dapatkan data divisi sesuai profile
             $row = $this->Divisi->get($value->DIVISI_DITANYA);
             $row->ID_PROFILE = $value->ID;
+
+            //dapatkan status survey sudah terjawab apa belum
+            $isFinished = false;
+            foreach ($hresponse as $key => $valueH) {
+                if ($valueH->ID_PROFILE == $value->ID) {
+                    $isFinished = true;
+                }
+            }
+            $row->FINISHED = $isFinished;
+
             $data[] = $row;
         }
         return $data;
