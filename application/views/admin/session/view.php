@@ -146,7 +146,7 @@
 				<div class="modal-dialog modal-dialog-centered modal-xl">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title">Update Sesi</h5>
+							<h5 class="modal-title">Update Session</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div class="modal-body p-0">
@@ -176,7 +176,7 @@
 											<br>
 											<div class="col-lg-10">
 												<button type="button" data-bs-dismiss="modal" class="btn btn-danger">Cancel</button>
-												<button type="submit" class="btn btn-primary">Update Divisi</button>
+												<button type="submit" class="btn btn-primary">Update Session</button>
 											</div>
 										</div>
 									</div>
