@@ -8,6 +8,7 @@ class UserAPI extends RestController{
     function __construct()
     {
         parent::__construct();
+        $this->load->model('UserModel', 'User');
     }
 
     public function index_get()
@@ -29,6 +30,28 @@ class UserAPI extends RestController{
 
         $this->response($row, RestController::HTTP_OK);
     }   
+
+    public function index_post()
+    {
+        $username = $this->post('username') ?? "";
+        $password = $this->post('password') ?? "";
+
+        $user = $this->User->find($username, $password);
+        if ($user == null) {
+            header('Access-Control-Allow-Origin: *');
+            $this->response([
+                'error' => true,
+                'message' => 'User tidak ditemukan'
+            ], RestController::HTTP_BAD_REQUEST);
+        }else{
+            header('Access-Control-Allow-Origin: *');
+            $this->response([
+                'error' => false,
+                'message' => "User ditemukan",
+                'data' => $user 
+            ], RestController::HTTP_OK);
+        }
+    }
 }
 
 ?>
