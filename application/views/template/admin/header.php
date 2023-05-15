@@ -36,7 +36,10 @@
 	<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
 </head>
 <?php
-	$user = $_SESSION['login'];
+	$user = $_SESSION['login'] ?? "";
+	if ($user == "") {
+		return redirect(base_url());
+	}
 ?>
 <body>
 

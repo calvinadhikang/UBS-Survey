@@ -4,9 +4,12 @@
 		<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
 			data-scroll="false">
 			<div class="container-fluid py-1 px-3">
-				<nav aria-label="breadcrumb">
+				<div class="row">
 					<h3 class="font-weight-bolder mb-0" style="color: #004882;">Master User</h3>
-				</nav>
+				</div>
+				<div class="row mx-2">
+					<button class="btn btn-danger" type="submit" data-bs-toggle="modal" data-bs-target="#randomModal">Random Password Users</button>
+				</div>
 			</div>
 		</nav>
 		<div class="container-fluid py-4">
@@ -18,10 +21,12 @@
 						</nav>
 					</div>
 				</div>
+				<div class="col mx-4">
+					<div class="float-end">
+						<button style="border-radius: 7px; border: #004882; background-color:#004882; color:white;" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="p-2">Add User</button>
+					</div>
+				</div>
 			</div>
-			<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;"
-				type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Add User</button>
-			<br>
 			<div class="container-fluid py-4">
 				<div class="row">
 					<div class="col-12">
@@ -43,6 +48,9 @@
 												<th
 													class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
 													Username</th>
+												<th
+													class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+													Password</th>
 												<th
 													class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
 													Role</th>
@@ -70,6 +78,9 @@
 												</td>
 												<td class="align-middle text-center text-sm">
 													<span class="text-secondary text-xs font-weight-bold"><?= $value->USERNAME ?></span>
+												</td>
+												<td class="align-middle text-center text-sm">
+													<span class="text-secondary text-xs font-weight-bold"><?= $value->PASSWORD ?></span>
 												</td>
 												<td class="align-middle text-center text-sm">
 													<?php 
@@ -121,13 +132,14 @@
 											<div class="col-lg-10">
 												<label class="form-label">Nama User</label>
 												<input type="text" class="form-control" name="nama"
-													placeholder="Masukkan Nama User">
+													placeholder="Masukkan Nama User" required>
 											</div>
 											<br>
 											<div class="col-lg-10">
 												<label class="form-label">Divisi</label>
-												<select name="divisi" id="" class="form-control">
+												<select name="divisi" id="" class="form-control" required>
 													<option value="" selected disabled>Pilih Divisi</option>
+													<option value="ADMIN" >ADMIN</option>
 													<?php foreach ($divisi as $key => $value) { ?>
 														<option value="<?= $value->ALIAS ?>"><?= $value->NAMA ?></option>
 													<?php } ?>
@@ -137,13 +149,13 @@
 											<div class="col-lg-10">
 												<label class="form-label">Username</label>
 												<input type="text" class="form-control" name="username"
-													placeholder="Masukkan Username">
+													placeholder="Masukkan Username" required>
 											</div>
 											<br>
 											<div class="col-lg-10">
 												<label class="form-label">Password</label>
 												<input type="text" class="form-control" name="password"
-													placeholder="Masukan Password">
+													placeholder="Masukan Password" required>
 											</div>
 											<br>
 											<div class="col-lg-10">
@@ -208,6 +220,32 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- UNTUK MODAL SAAT DI TEKAN RESET PASSWORD -->
+			<div class="modal fade" id="randomModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Yakin Random Password User Dibawah Ini ?</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body p-0">
+							<div class="container-fluid">
+								<br>
+								<!-- Spinner -->
+								<div class="d-flex justify-content-center">
+									<div class="spinner-border" role="status" id="spinner">
+										<span class="visually-hidden">Loading...</span>
+									</div>
+								</div>
+								<br>
+								<button type="button" data-bs-dismiss="modal" class="btn btn-primary">Cancel</button>
+								<button type="submit" class="btn btn-outline-danger" id="btnRandom">Ya, Random Password User</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 	</main>
 
 <script>
@@ -229,5 +267,34 @@ $(document).ready(() => {
 		$('#updateText').html(nama);
 		$('#updateId').val(id);
 	});
+
+	showLoading = (status) => {
+		status ? $('#spinner').show() : $('#spinner').hide()  
+	}
+
+	showLoading(false);
+
+	$(document).on('click', '#btnRandom', () => {
+		let body = new FormData();
+		body.append('command', 'random');
+	
+		let request = new Request("<?= base_url() ?>api/user", {
+			method: "POST",
+			body: body
+		})
+
+		showLoading(true);
+		fetch(request)
+			.then((res) => res.json())
+			.then((res) => {
+				showLoading(false);
+				if (res.error) {
+					alert(`Error: ${res.message} `);
+				}else{
+					alert(`Berhasil random password`);
+					window.location.href = "<?= base_url("user") ?>"
+				}
+			})
+	})
 })
 </script>
