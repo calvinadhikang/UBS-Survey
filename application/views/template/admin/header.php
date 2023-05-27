@@ -34,6 +34,9 @@
 
 	<!-- CanvasJS -->
 	<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+
+	<!-- Bikin Excel -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <?php
 	$user = $_SESSION['login'] ?? "";
