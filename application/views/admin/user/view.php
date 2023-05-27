@@ -94,14 +94,21 @@
 												<td class="align-middle text-center text-sm">
 													<?php 
 														$status = "Non-Aktif";
+														$color = "danger";
 														if($value->STATUS){
 															$status = "Aktif";
+															$color = "success";
 														}
 													?>
-													<span class="badge badge-sm bg-gradient-success"><?= $status ?></span>
+													<span class="badge badge-sm bg-gradient-<?= $color ?>"><?= $status ?></span>
 												</td>
 												<td class="align-middle text-center">
-													<button class="btn btn-primary btnUpdate" data-bs-toggle="modal" data-bs-target="#updateModal" nama="<?= $value->NAMA ?>" id="<?= $value->ID ?>">Update</button>
+													<button class="btn btn-primary btnUpdate" data-bs-toggle="modal" data-bs-target="#updateModal" 
+														nama="<?= $value->NAMA ?>" 
+														id="<?= $value->ID ?>"
+														username="<?= $value->USERNAME ?>"
+														password="<?= $value->PASSWORD ?>"
+														>Update</button>
 													<button class="btn btn-danger btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" nama="<?= $value->NAMA ?>" id="<?= $value->ID ?>">Delete</button>
 												</td>
 											</tr>
@@ -189,6 +196,95 @@
 			</div>
 
 
+			<!-- UNTUK MODAL SAAT DI TEKAN UPDATE -->
+			<div class="modal fade" data-bs-backdrop="static" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Update User</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body p-0">
+							<div class="container-fluid">
+								<form action="<?= base_url('user/update') ?>" method="post">
+									<input type="hidden" name="id" id="updateId">
+									<div class="row gy-4">
+										<div class="col-lg-8">
+											<div class="col-lg-10">
+												<label class="form-label">Nama User</label>
+												<input type="text" class="form-control" name="nama"
+													placeholder="Masukkan Nama User" required id="updateName">
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<label class="form-label">Divisi</label>
+												<select name="divisi" id="" class="form-control" required>
+													<option value="" selected disabled>Pilih Divisi</option>
+													<option value="ADMIN" >ADMIN</option>
+													<?php foreach ($divisi as $key => $value) { ?>
+														<option value="<?= $value->ALIAS ?>"><?= $value->NAMA ?></option>
+													<?php } ?>
+												</select>
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<label class="form-label">Username</label>
+												<input type="text" class="form-control" name="username"
+													placeholder="Masukkan Username" required id="updateUsername">
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<label class="form-label">Password</label>
+												<input type="text" class="form-control" name="password"
+													placeholder="Masukan Password" required id="updatePassword">
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<label class="form-label">Role</label>
+												<div class="form-check">
+													<input class="form-check-input" type="radio" name="role"
+														id="flexRadioDefault1" value="0">
+													<label class="form-check-label" for="flexRadioDefault1">Admin</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="radio" name="role"
+														id="flexRadioDefault2" checked value="1">
+													<label class="form-check-label"
+														for="flexRadioDefault2">Responden</label>
+												</div>
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<label class="form-label">Status</label>
+												<div class="form-check">
+													<input class="form-check-input" type="radio" name="status"
+														id="flexRadioDefault1" checked value="1">
+													<label class="form-check-label" for="flexRadioDefault1">Aktif</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input" type="radio" name="status"
+														id="flexRadioDefault2" value="0">
+													<label class="form-check-label"
+														for="flexRadioDefault2">Non-Aktif</label>
+												</div>
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<button type="button" data-bs-dismiss="modal"
+													class="btn btn-danger">Cancel</button>
+												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Update
+													User</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<!-- UNTUK MODAL SAAT DI TEKAN DELETE -->
 			<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
 				aria-hidden="true">
@@ -262,9 +358,13 @@ $(document).ready(() => {
 
 	$('body').on('click', '.btnUpdate', function() {
 		let nama = $(this).attr('nama');
+		let username = $(this).attr('username');
+		let password = $(this).attr('password');
 		let id = $(this).attr('id');
 
-		$('#updateText').html(nama);
+		$('#updateName').val(nama);
+		$('#updateUsername').val(username);
+		$('#updatePassword').val(password);
 		$('#updateId').val(id);
 	});
 

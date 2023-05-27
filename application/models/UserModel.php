@@ -33,7 +33,7 @@ class UserModel extends CI_Model {
 
     public function delete($id)
     {
-        $this->db->query("DELETE FROM $this->table_name WHERE ID = '$id'");
+        $this->db->query("UPDATE $this->table_name SET STATUS = 0 WHERE ID = '$id'");
         return 1;
     }
 
@@ -46,9 +46,9 @@ class UserModel extends CI_Model {
     }
 
     public function update($id, $divisi, $username, $nama, $password, $role, $status){
-        if ($this->duplicate($username)) {
-            return 0;
-        }else{
+        // if ($this->duplicate($username)) {
+        //     return 0;
+        // }else{
             $data = array(
                 'ID' => $id,
                 'DIVISI' => $divisi,
@@ -61,7 +61,7 @@ class UserModel extends CI_Model {
             $this->db->where('ID', $id);
             $this->db->update($this->table_name, $data);
             return 1;
-        }
+        // }
     }
 
     public function duplicate($username)

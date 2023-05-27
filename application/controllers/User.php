@@ -37,6 +37,26 @@ class User extends CI_Controller {
 		return redirect(base_url('user'));
 	}
 
+	public function update()
+	{
+		$id = $this->input->post('id');
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		$nama = $this->input->post('nama');
+		$divisi = $this->input->post('divisi');
+		$role = $this->input->post('role');
+		$status = $this->input->post('status');
+
+		$result = $this->User->update($id, $divisi, $username, $nama, $password, $role, $status);
+
+		if ($result) {
+			$this->toastr->success('Berhasil menambah User : '.$nama);
+		}else{
+			$this->toastr->error("Username tidak boleh kembar");
+		}
+		return redirect(base_url('user'));
+	}
+
 	public function delete()
 	{
 		$id = $this->input->post('id');
