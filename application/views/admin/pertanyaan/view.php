@@ -19,11 +19,13 @@
 						</nav>
 					</div>
 				</div>
+				<div class="col mx-4">
+					<div class="float-end">
+						<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="p-2">Tambah Pertanyaan</button>
+					</div>
+				</div>
 			</div>
-			<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;"
-				type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Pertanyaan</button>
-			<br>
-			<div class="container-fluid py-4">
+			<div class="container-fluid py-2">
 				<div class="row">
 					<div class="col-12">
 						<div class="card mb-4">
@@ -56,7 +58,7 @@
 													</td>
 													<td class="align-middle text-center">
 														<button class="btn btn-primary btnUpdate" data-bs-toggle="modal" data-bs-target="#updateModal" teks="<?= $value->TEXT ?>" id="<?= $value->ID ?>">Update</button>
-														<button class="btn btn-danger btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" teks="<?= $value->TEXT ?>" id="<?= $value->ID ?>">Delete</button>
+														<button class="btn btn-danger btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" teks="<?= $value->TEXT ?>" id="<?= $value->ID ?>">Hapus</button>
 													</td>
 												</tr>
 											<?php } ?>

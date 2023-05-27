@@ -9,7 +9,7 @@
 			</div>
 		</nav>
 		<div class="container-fluid py-4">
-			<div class="row">
+		<div class="row">
 				<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
 					<div class="container-fluid py-1 px-3">
 						<nav aria-label="breadcrumb">
@@ -17,11 +17,13 @@
 						</nav>
 					</div>
 				</div>
+				<div class="col mx-4">
+					<div class="float-end">
+						<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="p-2">Tambah Divisi</button>
+					</div>
+				</div>
 			</div>
-			<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;"
-				type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Divisi</button>
-			<br>
-			<div class="container-fluid py-4">
+			<div class="container-fluid py-2">
 				<div class="row">
 					<div class="col-12">
 						<div class="card mb-4">
@@ -54,7 +56,7 @@
 												</td>
 												<td class="align-middle text-center">
 													<button class="btn btn-primary btnUpdate" data-bs-toggle="modal" data-bs-target="#updateModal" nama="<?= $value->NAMA ?>" alias="<?= $value->ALIAS ?>">Update</button>
-													<button class="btn btn-danger btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" nama="<?= $value->NAMA ?>" alias="<?= $value->ALIAS ?>">Delete</button>
+													<button class="btn btn-danger btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" nama="<?= $value->NAMA ?>" alias="<?= $value->ALIAS ?>">Hapus</button>
 													<a href="<?= base_url("divisi/detail?alias=".$value->ALIAS) ?>"><button class="btn btn-info">Detail</button></a>
 												</td>
 											</tr>

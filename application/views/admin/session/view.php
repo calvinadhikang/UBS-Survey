@@ -19,11 +19,13 @@
 						</nav>
 					</div>
 				</div>
+				<div class="col mx-4">
+					<div class="float-end">
+						<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="p-2">Tambah Session</button>
+					</div>
+				</div>
 			</div>
-			<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;"
-				type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Session</button>
-			<br>
-			<div class="container-fluid py-4">
+			<div class="container-fluid py-2">
 				<div class="row">
 					<div class="col-12">
 						<div class="card mb-4">
