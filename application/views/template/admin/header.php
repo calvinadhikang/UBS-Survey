@@ -80,7 +80,7 @@
 							<li class="nav-item">
 								<a class="nav-link active" href="<?= base_url('dashboard') ?>">
 									<div
-										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center" style="width: 20px;">
 										<i class="fas fa-table text-primary text-sm opacity-10"></i>
 									</div>
 									<span class="nav-link-text ms-1">Dashboard</span>
@@ -89,7 +89,7 @@
 							<li class="nav-item">
 								<a class="nav-link " href="<?= base_url('divisi') ?>">
 									<div
-										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center" style="width: 20px;">
 										<i class="fas fa-building text-warning text-sm opacity-10"></i>
 									</div>
 									<span class="nav-link-text ms-1">Master Divisi</span>
@@ -98,7 +98,7 @@
 							<li class="nav-item">
 								<a class="nav-link " href="<?= base_url('user') ?>">
 									<div
-										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center" style="width: 20px;">
 										<i class="fas fa-users text-success text-sm opacity-10"></i>
 									</div>
 									<span class="nav-link-text ms-1">Master User</span>
@@ -107,7 +107,7 @@
 							<li class="nav-item">
 								<a class="nav-link " href="<?= base_url('pertanyaan') ?>">
 									<div
-										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center" style="width: 20px;">
 										<i class="fas fa-clipboard text-info text-sm opacity-10"></i>
 									</div>
 									<span class="nav-link-text ms-1">Master Pertanyaan</span>
@@ -116,7 +116,7 @@
 							<li class="nav-item">
 								<a class="nav-link " href="<?= base_url('sesi') ?>">
 									<div
-										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center" style="width: 20px;">
 										<i class="fas fa-globe text-danger text-sm opacity-10"></i>
 									</div>
 									<span class="nav-link-text ms-1">Master Session</span>
@@ -126,7 +126,7 @@
 							<li class="nav-item">
 								<a class="nav-link " href="<?= base_url() ?>">
 									<div
-										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+										class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center" style="width: 20px;">
 										<i class="fa fa-sign-out text-danger text-sm opacity-10"></i>
 									</div>
 									<span class="nav-link-text ms-1">Logout</span>

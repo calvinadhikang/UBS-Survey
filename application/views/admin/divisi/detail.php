@@ -23,7 +23,7 @@
 				</div>
 			</div>
 			<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;"
-				type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Karyawan</button>
+				type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="p-2">Add Karyawan</button>
 			<br>
 			<div class="container-fluid py-4">
 				<div class="row">
@@ -113,8 +113,7 @@
 					</div>
 				</div>
 			</div>
-			<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;"
-				type="submit" data-bs-toggle="modal" data-bs-target="#divisiModal">Add Divisi</button>
+			<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;" type="submit" data-bs-toggle="modal" data-bs-target="#divisiModal" class="p-2">Add Divisi</button>
 			<br>
 			<div class="container-fluid py-4">
 				<div class="row">

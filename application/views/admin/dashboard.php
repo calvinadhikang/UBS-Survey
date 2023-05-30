@@ -70,7 +70,7 @@
 								<h4>Laporan Completion</h4>
 							</div>
 							<div class="col text-end">
-								<select name="" id="" class="form-control">
+								<select id="filterCompletion" class="form-control">
 									<option value="">Semua Divisi</option>
 									<?php foreach ($divisi as $key => $value) { ?>
 										<option value="<?= $value->ALIAS ?>"><?= $value->NAMA ?></option>
@@ -81,6 +81,7 @@
 						</div>
 						<hr>
 						<div id="chartCompletion" style="height: 370px; width: 100%;"></div>
+						<button class="btn btn-outline-primary" id="btnExcelCompletion">Buat Excel</button>
 					</div>
 				<?php } else { ?>
 					<div class="col border rounded shadow-sm p-4">
@@ -128,22 +129,24 @@
 	let divisiGradeNama = "";
 	let dataExcelGrade = [];
 
+	let divisiCompletion = "";
+	let divisiCompletionNama = "";
+	let dataExcelCompletion = [];
+
 	$('#filterGrade').on('change', (e) => {
 		divisiGrade = e.target.value;
 		divisiGradeNama = e.target.getAttribute('teks');
 		generateLaporanGrade()
 	})
 
+	$('#filterCompletion').on('change', (e) => {
+		divisiCompletion = e.target.value;
+		divisiCompletionNama = e.target.getAttribute('teks');
+		generateLaporanCompletion()
+	})
+
 	$('#btnExcelGrade').on('click', (e) => {
 		console.log('generating excel..')
-		// var data = [
-		// 	["Nama", "Email"],
-		// 	["Joa Doe", "joa@doe.com"],
-		// 	["Job Doe", "job@doe.com"],
-		// 	["Joe Doe", "joe@doe.com"],
-		// 	["Jon Doe", "jon@doe.com"],
-		// 	["Joy Doe", "joy@doe.com"]
-		// ];
 
 		let namaFile = "Semua Divisi"
 		if (divisiGrade != ""){
@@ -158,10 +161,27 @@
 		XLSX.writeFile(workbook, `LaporanGrade ${namaFile} .xlsx`);
 	})
 
+	$('#btnExcelCompletion').on('click', (e) => {
+		console.log('generating excel..')
+
+		let namaFile = "Semua Divisi"
+		if (divisiCompletion != ""){
+			namaFile = divisiCompletion;
+		}
+
+		var workbook = XLSX.utils.book_new(),
+    		worksheet = XLSX.utils.aoa_to_sheet(dataExcelCompletion);
+		workbook.SheetNames.push(namaFile);
+		workbook.Sheets[namaFile] = worksheet;
+
+		XLSX.writeFile(workbook, `LaporanCompletion ${namaFile} .xlsx`);
+	})
+
 	generateLaporanGrade = () => {
 		showLoadingGrade(true);
 		if (sesi == "") {
 			console.log('no sesi');
+			showLoadingGrade(false);
 			return;
 		}
 
@@ -192,6 +212,7 @@
 				// }
 
 				var chart = new CanvasJS.Chart("chartGrade", {
+					exportEnabled: true,
 					animationEnabled: true,
 					theme: "light2", // "light1", "light2", "dark1", "dark2"
 					title: {
@@ -216,25 +237,58 @@
 	}
 
 	generateLaporanCompletion = () => {
-		var chart = new CanvasJS.Chart("chartCompletion", {
-			exportEnabled: true,
-			animationEnabled: true,
-			title:{
-				text: chartTitle
-			},
-			legend:{
-				cursor: "pointer",
-				itemclick: explodePie
-			},
-			data: [{
-				type: "pie",
-				showInLegend: true,
-				toolTipContent: "{name}: <strong>{y}x</strong>",
-				indexLabel: "{name}: {y}x",
-				dataPoints: dataPoint
-			}]
-		});
-		chart.render();
+		showLoadingCompletion(true);
+		if (sesi == "") {
+			console.log('no sesi');
+			showLoadingCompletion(false);
+			return;
+		}
+
+		let req = new Request(`<?= base_url() ?>api/laporan?type=completion&sesi=${sesi}&divisi=${divisiCompletion}`);
+		fetch(req)
+			.then((res) => res.json())
+			.then((res) => {
+				showLoadingCompletion(false);
+				console.log(res);
+
+				let surveyTotal = res.data.jumlahSurveyTotal;
+				let surveySelesai = res.data.jumlahSurveySelesai;
+				let surveyKurang = surveyTotal - surveySelesai;
+				
+				// Pengecekan apakah Laporan bisa di generate ? (ada data atau tidak)
+				if (surveyTotal == 0 && surveySelesai == 0) {
+					$('#chartCompletion').html('Tidak ada Data, atau survey belum ada untuk Divisi Ini')
+					return;
+				}
+
+				// isi Data Untuk Excel Completion
+				dataExcelCompletion.push(["Jumlah Survey Selesai : ", `${surveySelesai}`])
+				dataExcelCompletion.push(["Jumlah Survey Belum Selesai : ", `${surveyKurang}`])
+
+				// Buat Chart untuk Laporan Completion
+				var chart = new CanvasJS.Chart("chartCompletion", {
+					exportEnabled: true,
+					animationEnabled: true,
+					title:{
+						text: ""
+					},
+					legend:{
+						cursor: "pointer",
+						itemclick: explodePie
+					},
+					data: [{
+						type: "pie",
+						showInLegend: true,
+						toolTipContent: "{name}: <strong>{y}x</strong>",
+						indexLabel: "{name}: {y}x",
+						dataPoints: [
+							{ y: surveySelesai, name: "Survey Selesai", exploded: true },
+							{ y: surveyKurang, name: "Survey Belum Selesai" }
+						]
+					}]
+				});
+				chart.render();
+			})
 	}
 
 	function explodePie (e) {
@@ -254,5 +308,14 @@
 		}
 	}
 
+	showLoadingCompletion = (status) => {
+		if(status){
+			$('#loadingCompletion').show();
+		}else{
+			$('#loadingCompletion').hide();
+		}
+	}
+
 	generateLaporanGrade();
+	generateLaporanCompletion();
 </script>

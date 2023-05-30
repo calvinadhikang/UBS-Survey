@@ -258,12 +258,12 @@
 											<div class="col-lg-10">
 												<label class="form-label">Status</label>
 												<div class="form-check">
-													<input class="form-check-input" type="radio" name="role"
+													<input class="form-check-input" type="radio" name="status"
 														id="flexRadioDefault1" checked value="1">
 													<label class="form-check-label" for="flexRadioDefault1">Aktif</label>
 												</div>
 												<div class="form-check">
-													<input class="form-check-input" type="radio" name="role"
+													<input class="form-check-input" type="radio" name="status"
 														id="flexRadioDefault2" value="0">
 													<label class="form-check-label"
 														for="flexRadioDefault2">Non-Aktif</label>

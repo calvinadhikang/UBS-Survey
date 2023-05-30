@@ -64,28 +64,50 @@ class LaporanModel extends CI_Model {
         // Laporan Grade
         if ($divisi == "") {
             $profiles = $this->db->query("select * from r_profile where id_session = $sesi")->result();
-            $users = $this->db->query("select count(*) as JUMLAH from m_user where status=1")->result();
+
+            $jumlahUser = 0;
+            $jumlahSurveyTotal = 0;
+
+            // Ambil Jumlah HResponse / Jumlah Quiz Yang Sudah Di Submit
+            $jumlahHResponse = 0;
+            // Ambil Divisi Apa saja yang di Survey
+            $arrDivisiDiSurvey = [];
+            foreach ($profiles as $key => $value) {
+                $alias = $value->DIVISI_DITANYA;
+                $arrDivisiDiSurvey[] = $this->Divisi->get($alias);
+
+                $aliasSurveyor = $value->DIVISI_TANYA;
+                $users = $this->db->query("select count(*) as JUMLAH from m_user where divisi='$aliasSurveyor' and status=1")->result();
+                $jumlahUser += $users[0]->JUMLAH;
+                $jumlahSurveyTotal += $users[0]->JUMLAH;
+                
+                $hresponses = $this->db->query("select count(*) as JUMLAH from h_response where id_profile=$value->ID")->result();
+                $jumlahHResponse += $hresponses[0]->JUMLAH;
+            }
+            // Khusus untuk field ini harus dibawah.. kalau tidak, undefined
+            $jumlahDivisiDiSurvey = count($arrDivisiDiSurvey);
+
+
         }else{
             $profiles = $this->db->query("select * from r_profile where id_session = $sesi and divisi_tanya = '$divisi'")->result();
-            $users = $this->db->query("select count(*) as JUMLAH from m_user where divisi='KEU' and status=1")->result();
-        }
-
-        // Ambil Jumlah HResponse / Jumlah Quiz Yang Sudah Di Submit
-        $jumlahHResponse = 0;
-        // Ambil Divisi Apa saja yang di Survey
-        $arrDivisiDiSurvey = [];
-        foreach ($profiles as $key => $value) {
-            $alias = $value->DIVISI_DITANYA;
-            $arrDivisiDiSurvey[] = $this->Divisi->get($alias);
+            $users = $this->db->query("select count(*) as JUMLAH from m_user where divisi='$divisi' and status=1")->result();
             
-            $hresponses = $this->db->query("select count(*) as JUMLAH from h_response where id_profile=$value->ID")->result();
-            $jumlahHResponse += $hresponses[0]->JUMLAH;
-        }
+            // Ambil Jumlah HResponse / Jumlah Quiz Yang Sudah Di Submit
+            $jumlahHResponse = 0;
+            // Ambil Divisi Apa saja yang di Survey
+            $arrDivisiDiSurvey = [];
+            foreach ($profiles as $key => $value) {
+                $alias = $value->DIVISI_DITANYA;
+                $arrDivisiDiSurvey[] = $this->Divisi->get($alias);
+                
+                $hresponses = $this->db->query("select count(*) as JUMLAH from h_response where id_profile=$value->ID")->result();
+                $jumlahHResponse += $hresponses[0]->JUMLAH;
+            }
 
-        // Ambil Jumlah User
-        $jumlahUser = $users[0]->JUMLAH;
-        $jumlahDivisiDiSurvey = count($arrDivisiDiSurvey);
-        $jumlahSurveyTotal = $jumlahUser * $jumlahDivisiDiSurvey;
+            $jumlahUser = $users[0]->JUMLAH;
+            $jumlahDivisiDiSurvey = count($arrDivisiDiSurvey);
+            $jumlahSurveyTotal = $jumlahUser * $jumlahDivisiDiSurvey;
+        }
 
 
         $result = [
