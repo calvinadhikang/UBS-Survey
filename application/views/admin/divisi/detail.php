@@ -22,9 +22,6 @@
 					</div>
 				</div>
 			</div>
-			<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;"
-				type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="p-2">Add Karyawan</button>
-			<br>
 			<div class="container-fluid py-4">
 				<div class="row">
 					<div class="col-12">
