@@ -15,17 +15,19 @@ class UserAPI extends RestController{
     {
         $id = $this->get('id');
         if ($id === null) {
-            $query = $this->db->query("SELECT * FROM TEST");
-            $row = $query->result();
+            $row = $this->User->get();
         }else{
-            $data = array(
-                'NAMA' => $this->get('new')
-            );
-            $this->db->where('NAMA', $this->get($id));
-            $this->db->update('TEST', $data);
+            $row = $this->User->get($id);
+        }
 
-            $query = $this->db->query("SELECT * FROM TEST WHERE NAMA = '$id'");
-            $row = $query->result();
+        $isActive = $this->get('active');
+        if ($isActive) {
+            $this->load->model('DivisiModel', 'Divisi');
+            $row = $this->User->getActiveRespondents();
+            foreach ($row as $key => $value) {
+                $namaDivisi = $this->Divisi->get($value->DIVISI);
+                $value->NAMA_DIVISI = $namaDivisi->NAMA;
+            }
         }
 
         $this->response($row, RestController::HTTP_OK);

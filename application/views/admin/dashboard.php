@@ -261,6 +261,7 @@
 					return;
 				}
 
+				dataExcelCompletion = [];
 				// isi Data Untuk Excel Completion
 				dataExcelCompletion.push(["Jumlah Survey Selesai : ", `${surveySelesai}`])
 				dataExcelCompletion.push(["Jumlah Survey Belum Selesai : ", `${surveyKurang}`])

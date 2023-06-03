@@ -23,7 +23,7 @@
 				</div>
 				<div class="col mx-4">
 					<div class="float-end">
-						<button style="border-radius: 7px; border: #004882; background-color:#004882; color:white;" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="p-2">Add User</button>
+						<button style="border-radius: 7px; border: #004882; background-color:#004882; color:white;" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="p-2">Tambah User</button>
 					</div>
 				</div>
 			</div>
@@ -117,6 +117,11 @@
 									</table>
 								</div>
 							</div>
+						</div>
+						<div class="">
+							<p>Dapatkan Data User dalam Excel</p>
+							<button class="btn btn-outline-success" id="excel">Buat Excel</button>
+							<div class="spinner-border" role="status" id="excelLoading"></div>
 						</div>
 					</div>
 				</div>
@@ -372,8 +377,6 @@ $(document).ready(() => {
 		status ? $('#spinner').show() : $('#spinner').hide()  
 	}
 
-	showLoading(false);
-
 	$(document).on('click', '#btnRandom', () => {
 		let body = new FormData();
 		body.append('command', 'random');
@@ -396,5 +399,49 @@ $(document).ready(() => {
 				}
 			})
 	})
+
+	showExcelLoading = (status) => {
+		if (status) {
+			$('#excelLoading').show();
+		}else{
+			$('#excelLoading').hide();
+		}
+	}
+
+	$(document).on('click', '#excel', () => {
+		let request = new Request("<?= base_url() ?>api/user?active=1", {
+			method: "GET",
+		})
+
+		showExcelLoading(true);
+		fetch(request)
+			.then((res) => res.json())
+			.then((res) => {
+				showExcelLoading(false);
+				console.log(res);
+				
+				let namaFile = "Data User";
+				let dataExcel = [];
+
+				//add Excel Header
+				dataExcel.push(["NAMA", "USERNAME", "PASSWORD", "DIVISI"])
+				//add Excel Data / Body
+				res.forEach(element => {
+					dataExcel.push([element.NAMA, element.USERNAME, element.PASSWORD, element.NAMA_DIVISI]);
+				});
+
+				var workbook = XLSX.utils.book_new(),
+				worksheet = XLSX.utils.aoa_to_sheet(dataExcel);
+				workbook.SheetNames.push(namaFile);
+				workbook.Sheets[namaFile] = worksheet;
+
+				XLSX.writeFile(workbook, `Excel ${namaFile}.xlsx`);
+				alert("Excel Berhasil Dibuat !");
+			})
+	})
+
+	// Tutup / Hilangkan loading saat pertama kali berjalan..
+	showLoading(false);
+	showExcelLoading(false);
 })
 </script>

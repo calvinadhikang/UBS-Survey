@@ -45,6 +45,11 @@ class UserModel extends CI_Model {
         }
     }
 
+    public function getActiveRespondents()
+    {
+        return $this->db->query("SELECT * FROM M_USER WHERE STATUS=1 AND ROLE=1 ORDER BY DIVISI")->result();
+    }
+
     public function update($id, $divisi, $username, $nama, $password, $role, $status){
         // if ($this->duplicate($username)) {
         //     return 0;
