@@ -119,7 +119,7 @@
 							</div>
 						</div>
 						<div class="">
-							<p>Dapatkan Data User dalam Excel</p>
+							<h3>Dapatkan Data User dalam Excel</h3>
 							<button class="btn btn-outline-success" id="excel">Buat Excel</button>
 							<div class="spinner-border" role="status" id="excelLoading"></div>
 						</div>

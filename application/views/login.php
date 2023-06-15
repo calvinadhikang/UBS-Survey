@@ -83,7 +83,7 @@
 												style="border: 1px solid black;" required>
 											<br>
 											<label for="username" >Password</label>
-											<input type="text" class="form-control" placeholder="Enter Your Password" name="password"
+											<input type="password" class="form-control" placeholder="Enter Your Password" name="password"
 												style="border: 1px solid black;" required>
 											<br>
 											<button type="submit" class="btn btn-block btn-primary">Login</button>

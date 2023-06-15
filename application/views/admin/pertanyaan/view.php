@@ -58,7 +58,7 @@
 													</td>
 													<td class="align-middle text-center">
 														<button class="btn btn-primary btnUpdate" data-bs-toggle="modal" data-bs-target="#updateModal" teks="<?= $value->TEXT ?>" id="<?= $value->ID ?>">Update</button>
-														<button class="btn btn-danger btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" teks="<?= $value->TEXT ?>" id="<?= $value->ID ?>">Hapus</button>
+														<!-- <button class="btn btn-danger btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" teks="<?= $value->TEXT ?>" id="<?= $value->ID ?>">Hapus</button> -->
 													</td>
 												</tr>
 											<?php } ?>
