@@ -13,6 +13,8 @@ class PertanyaanAPI extends RestController{
 
     public function index_get()
     {
+        header('Access-Control-Allow-Origin: *');
+
         $id = $this->get('id');
         if ($id === null) {
             $row = $this->Pertanyaan->get();

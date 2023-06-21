@@ -13,6 +13,8 @@ class ResponseAPI extends RestController{
 
     public function index_post()
     {
+        header('Access-Control-Allow-Origin: *');
+
         $data = $this->post('data') ?? "";
         $idUser = $this->post('user') ?? "";
         $idProfile = $this->post('profile') ?? "";

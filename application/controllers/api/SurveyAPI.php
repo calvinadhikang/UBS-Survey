@@ -13,6 +13,8 @@ class SurveyAPI extends RestController{
 
     public function index_get()
     {
+        header('Access-Control-Allow-Origin: *');
+
         $userId = $this->get('user') ?? "";
         $divisiUserId = $this->get('divisi') ?? "";
         $sesiId = $this->get('sesi') ?? "";

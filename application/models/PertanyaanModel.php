@@ -11,7 +11,10 @@ class PertanyaanModel extends CI_Model {
         if ($this->duplicate($text)) {
             return 0;
         }else{
+            $lastId = $this->db->query("SELECT MAX(ID) AS MAX FROM M_PERTANYAAN")->result();
+
             $data = array(
+                'ID' => $lastId[0]->MAX + 1,
                 'TEXT' => $text,
                 'STATUS' => 1
             );

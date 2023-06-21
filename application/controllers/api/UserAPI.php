@@ -9,6 +9,7 @@ class UserAPI extends RestController{
     {
         parent::__construct();
         $this->load->model('UserModel', 'User');
+		$this->load->model("SesiModel", 'Sesi');
     }
 
     public function index_get()
@@ -108,23 +109,39 @@ class UserAPI extends RestController{
         }
 
         // HANDLE USER LOGIN
+        header('Access-Control-Allow-Origin: *');
         $username = $this->post('username') ?? "";
         $password = $this->post('password') ?? "";
 
         $user = $this->User->find($username, $password);
         if ($user == null) {
-            header('Access-Control-Allow-Origin: *');
             $this->response([
                 'error' => true,
                 'message' => 'User tidak ditemukan'
             ], RestController::HTTP_BAD_REQUEST);
         }else{
-            header('Access-Control-Allow-Origin: *');
-            $this->response([
-                'error' => false,
-                'message' => "User ditemukan",
-                'data' => $user 
-            ], RestController::HTTP_OK);
+            // Kalau user sedang tidak aktif
+            if ($user->STATUS == 0 || $user->ROLE == 0) {
+                $this->response([
+                    'error' => true,
+                    'message' => 'User tidak punya Akses (tidak aktif)'
+                ], RestController::HTTP_BAD_REQUEST);
+            }else{
+                $hasActiveSession = $this->Sesi->getActive();
+				if ($hasActiveSession) {
+					$this->response([
+                        'error' => false,
+                        'message' => "User ditemukan, Berhasil login",
+                        'data' => $user,
+                        'sesi' => $hasActiveSession
+                    ], RestController::HTTP_OK);
+				}else{
+					$this->response([
+                        'error' => true,
+                        'message' => 'Tidak ada Sesi Survey yang sedang Aktif'
+                    ], RestController::HTTP_BAD_REQUEST);
+				}
+            }
         }
     }
 }

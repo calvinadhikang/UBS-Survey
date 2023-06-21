@@ -13,6 +13,7 @@ class PertanyaanSurveyorAPI extends RestController{
 
     public function index_get()
     {
+        header('Access-Control-Allow-Origin: *');
         // Mendapatkan pertanyaan untuk menentukan pertanyaan survey,
         // Dimana pertanyaan yang sebelumnya sudah ditambahkan akan diberi status CHECK = true.
         
