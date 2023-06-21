@@ -28,7 +28,8 @@ CREATE TABLE M_DIVISI
 CREATE TABLE M_PERTANYAAN
 (
     ID NUMBER(10) PRIMARY KEY,
-    TEXT VARCHAR2(250) NOT NULL
+    TEXT VARCHAR2(250) NOT NULL,
+    STATUS NUMBER(2) NOT NULL
 );
 
 CREATE TABLE M_SESSION
@@ -185,8 +186,8 @@ insert into M_USER (DIVISI, NAMA, USERNAME, PASSWORD, ROLE, STATUS) values ('KEU
 insert into M_USER (DIVISI, NAMA, USERNAME, PASSWORD, ROLE, STATUS) values ('AS', 'Ivander Wijaya', 'ivander', 'ivander', 1, 1);
 insert into M_USER (DIVISI, NAMA, USERNAME, PASSWORD, ROLE, STATUS) values ('ADMIN', 'Yuki Adhikang', 'yukibara', 'yukibara', 0, 1);
 
-insert into M_PERTANYAAN values (1, 'Berapa tingkat kepuasan terhadap divisi ini ?');
-insert into M_PERTANYAAN values (2, 'Berapa tingkat kecepatan pelayanan divisi ini ?');
-insert into M_PERTANYAAN values (3, 'Berapa tingkat tingkat kekompakan divisi ini ?');
+insert into M_PERTANYAAN values (1, 'Berapa tingkat kepuasan terhadap divisi ini ?', 1);
+insert into M_PERTANYAAN values (2, 'Berapa tingkat kecepatan pelayanan divisi ini ?', 1);
+insert into M_PERTANYAAN values (3, 'Berapa tingkat tingkat kekompakan divisi ini ?', 0);
 
 commit;

@@ -12,7 +12,8 @@ class PertanyaanModel extends CI_Model {
             return 0;
         }else{
             $data = array(
-                'TEXT' => $text 
+                'TEXT' => $text,
+                'STATUS' => 1
             );
             $this->db->insert($this->table_name, $data);
             return 1;
@@ -21,14 +22,14 @@ class PertanyaanModel extends CI_Model {
 
     public function delete($id)
     {
-        $this->db->query("DELETE FROM $this->table_name WHERE ID = '$id'");
+        $this->db->query("UPDATE $this->table_name SET STATUS = 0 WHERE ID = '$id'");
     }
 
     public function get($id = null){
         if ($id === null) {
-            return $this->db->get($this->table_name)->result();
+            return $this->db->query("SELECT * FROM $this->table_name WHERE STATUS = 1")->result();
         }else{
-            return $this->db->get_where($this->table_name, ['ID' => $id])->result();
+            return $this->db->query("SELECT * FROM $this->table_name WHERE ID = $id")->result();
         }
     }
 
