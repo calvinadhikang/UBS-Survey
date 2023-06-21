@@ -53,7 +53,7 @@
         data.forEach(element => {
             result += 
             `
-            <div class="mx-4 my-3">
+            <div class="mx-4 my-3 p-2 shadow">
                 <h3><b>${element.TEXT}</b></h3>
                 <div class="row w-50 my-2">
                     <div class="col"><input type="radio" class="radio" name="${element.ID}" value="1"> 1 </div>

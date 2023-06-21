@@ -33,6 +33,11 @@ class SurveyAPI extends RestController{
                 'message' => "Berhasil mendapat survey",
                 'data' => $survey
             ], RestController::HTTP_OK);
+        }else{
+            $this->response([
+                'error' => true,
+                'message' => "Kamu tidak punya survey",
+            ], RestController::HTTP_OK);
         }
     }   
 }

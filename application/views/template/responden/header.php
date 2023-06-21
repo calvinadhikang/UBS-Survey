@@ -122,12 +122,16 @@
 			.then((res) => {
 				console.log(res);
 
-				// sort listSurvey dari belum selesai
-				listSurvey = res.data.sort((a,b) => {
-					return a.FINISHED - b.FINISHED 
-				})
-
-				renderSurvey();
+				if (res.error) {
+					$('#listSurvey').html(`<div class="nav-link"><b>${res.message}</b></div>`);
+				} else {
+					// sort listSurvey dari belum selesai
+					listSurvey = res.data.sort((a,b) => {
+						return a.FINISHED - b.FINISHED 
+					})
+	
+					renderSurvey();
+				}
 			})
 	}
 
