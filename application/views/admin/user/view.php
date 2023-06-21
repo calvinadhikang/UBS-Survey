@@ -109,7 +109,18 @@
 														username="<?= $value->USERNAME ?>"
 														password="<?= $value->PASSWORD ?>"
 														>Update</button>
-													<button class="btn btn-danger btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" nama="<?= $value->NAMA ?>" id="<?= $value->ID ?>">Delete</button>
+													<?php 
+													if ($value->STATUS) { ?>
+														<button class="btn btn-danger btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" 
+														nama="<?= $value->NAMA ?>" 
+														id="<?= $value->ID ?>"
+														>Delete</button>
+													<?php } else { ?>
+														<button class="btn btn-success btnActive" data-bs-toggle="modal" data-bs-target="#activeModal" 
+														nama="<?= $value->NAMA ?>" 
+														id="<?= $value->ID ?>"
+														>Aktifkan</button>
+													<?php } ?>
 												</td>
 											</tr>
 											<?php } ?>
@@ -281,6 +292,38 @@
 			</div>
 
 			<!-- UNTUK MODAL SAAT DI TEKAN DELETE -->
+			<div class="modal fade" data-bs-backdrop="static" id="activeModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Yakin Aktifkan User Dibawah Ini ?</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body p-0">
+							<div class="container-fluid">
+								<form action="<?= base_url('user/active') ?>" method="post">
+									<div class="row gy-4">
+										<div class="col-lg-8">
+											<div class="col-lg-10">
+												<p id="activeName"></p>
+												<input type="hidden" class="form-control" name="id" id="activeId">
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<button type="button" data-bs-dismiss="modal"class="btn btn-danger">Cancel</button>
+												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Aktifkan User</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- UNTUK MODAL SAAT DI TEKAN DELETE -->
 			<div class="modal fade" data-bs-backdrop="static" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
 				aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered modal-xl">
@@ -349,6 +392,16 @@ $(document).ready(() => {
 
 		$('#deleteName').html(nama);
 		$('#deleteId').val(id);
+	});
+
+	$('body').on('click', '.btnActive', function() {
+		let nama = $(this).attr('nama');
+		let id = $(this).attr('id');
+
+		console.log(id)
+
+		$('#activeName').html(nama);
+		$('#activeId').val(id);
 	});
 
 	$('body').on('click', '.btnUpdate', function() {

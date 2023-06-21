@@ -37,6 +37,12 @@ class UserModel extends CI_Model {
         return 1;
     }
 
+    public function active($id)
+    {
+        $this->db->query("UPDATE $this->table_name SET STATUS = 1 WHERE ID = '$id'");
+        return 1;
+    }
+
     public function get($id = null){
         if ($id === null) {
             return $this->db->get($this->table_name)->result();

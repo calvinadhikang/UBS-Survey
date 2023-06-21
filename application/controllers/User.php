@@ -73,4 +73,13 @@ class User extends CI_Controller {
 		$this->toastr->success('Success Hapus User');
 		return redirect(base_url('user'));
 	}
+
+	public function active()
+	{
+		$id = $this->input->post('id');
+		$result = $this->User->active($id);
+
+		$this->toastr->success('Success Aktifkan User');
+		return redirect(base_url('user'));
+	}
 }
