@@ -29,13 +29,15 @@
 						</nav>
 					</div>
 				</div>
+				<div class="col mx-4">
+					<div class="float-end">
+						<!-- Btn Pertanyaan -->
+						<a href="<?php echo base_url()."divisi/detail/surveyor/pertanyaan?surveyor=".$tanya->ALIAS."&target=".$ditanya->ALIAS;  ?>">
+							<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;" class="p-2">Edit Pertanyaan</button>
+						</a>
+					</div>
+				</div>
 			</div>
-			<!-- Btn Pertanyaan -->
-			<a href="<?php echo base_url()."divisi/detail/surveyor/pertanyaan?surveyor=".$tanya->ALIAS."&target=".$ditanya->ALIAS;  ?>">
-				<button style="border-radius: 7px; border: #004882; float:right; background-color:#004882; color:white;">Add Pertanyaan</button>
-			</a>
-
-			<br>
 			<div class="container-fluid py-4">
 				<div class="row">
 					<div class="col-12">
@@ -51,27 +53,30 @@
 												<th
 													class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
 													Pertanyaan</th>
-												<th
-													class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-													Aksi</th>
 											</tr>
 										</thead>
 										<tbody>
-											<?php foreach ($pertanyaan as $key => $value) { ?>
-												<tr>
-													<td>
-														<div class="d-flex px-3 py-1">
-															<p class="text-xs font-weight-bold mb-0"><?= $value->ID ?></p>
-														</div>
-													</td>
-													<td>
-														<span class="text-secondary text-xs font-weight-bold"><?= $value->TEXT ?></span>
-													</td>
-													<td class="align-middle text-center">
-														<button class="btn btn-danger btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" teks="<?= $value->TEXT ?>" id="<?= $value->ID ?>">Delete</button>
-													</td>
-												</tr>
-											<?php } ?>
+											<?php 
+												if (count($pertanyaan) <= 0) { ?>
+													<tr>
+														<td class="text-danger"><b>Belum ada pertanyaan...</b></td>
+														<td></td>
+													</tr>
+											<?php } else {
+													foreach ($pertanyaan as $key => $value) { ?>
+													<tr>
+														<td>
+															<div class="d-flex px-3 py-1">
+																<p class="text-xs font-weight-bold mb-0"><?= $value->ID ?></p>
+															</div>
+														</td>
+														<td>
+															<span class="text-secondary text-xs font-weight-bold"><?= $value->TEXT ?></span>
+														</td>
+													</tr>
+											<?php	
+												}
+											} ?>
 										</tbody>
 									</table>
 								</div>
@@ -81,37 +86,5 @@
 				</div>
 			</div>
         </div>
-
-		<!-- Modal Delete -->
-		<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered modal-xl">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Hapus Divisi</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body p-0">
-						<div class="container-fluid">
-							<form action="<?= base_url('divisi/delete') ?>" method="post">
-								<div class="row gy-4">
-									<div class="col-lg-8">
-										<div class="col-lg-10">
-											<input type="hidden" name="id" id="deleteId" value="">
-											<p id="deleteText"></p>
-										</div>
-										<div class="col-lg-10">
-											<button type="button" data-bs-dismiss="modal"
-												class="btn btn-danger">Cancel</button>
-											<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Hapus
-												Divisi</button>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</main>
 </div>

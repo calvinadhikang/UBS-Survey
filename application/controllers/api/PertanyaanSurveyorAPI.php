@@ -23,7 +23,7 @@ class PertanyaanSurveyorAPI extends RestController{
         }
         
         // 2. Get Semua Pertanyaan Yang Ada
-        $pertanyaanAll = $this->Pertanyaan->get();
+        $pertanyaanAll = $this->Pertanyaan->getActive();
         
         // 3. Di ForEach agar bila data langkah 1 dan 2 ada yang sama ID nya..
         // Maka berikan status CHECK = true (sudah ditambahkan sebelumnya) 

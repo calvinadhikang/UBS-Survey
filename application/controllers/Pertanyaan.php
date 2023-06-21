@@ -38,6 +38,15 @@ class Pertanyaan extends CI_Controller {
 		$this->toastr->success('Success Hapus Pertanyaan');
 		return redirect(base_url('pertanyaan'));
 	}
+
+	public function active()
+	{
+		$id = $this->input->post('id');
+		$obj = $this->Pertanyaan->active($id);
+
+		$this->toastr->success('Success Aktifkan Pertanyaan');
+		return redirect(base_url('pertanyaan'));
+	}
 	
 	public function update()
 	{

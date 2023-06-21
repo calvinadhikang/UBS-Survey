@@ -41,6 +41,9 @@
 													class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
 													Pertanyaan</th>
 												<th
+													class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+													Status</th>
+												<th
 													class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
 													Aksi</th>
 											</tr>
@@ -56,9 +59,25 @@
 													<td>
 														<span class="text-secondary text-xs font-weight-bold"><?= $value->TEXT ?></span>
 													</td>
+													<td>
+														<?php 
+															$status = "Non-Aktif";
+															$color = "danger";
+															if($value->STATUS){
+																$status = "Aktif";
+																$color = "success";
+															}
+														?>
+														<span class="badge badge-sm bg-gradient-<?= $color ?>"><?= $status ?></span>
+													</td>
 													<td class="align-middle text-center">
 														<button class="btn btn-primary btnUpdate" data-bs-toggle="modal" data-bs-target="#updateModal" teks="<?= $value->TEXT ?>" id="<?= $value->ID ?>">Update</button>
-														<button class="btn btn-danger btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" teks="<?= $value->TEXT ?>" id="<?= $value->ID ?>">Hapus</button>
+														<?php
+														if ($value->STATUS) { ?>
+															<button class="btn btn-danger btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal" teks="<?= $value->TEXT ?>" id="<?= $value->ID ?>">Hapus</button>
+														<?php }else{ ?>
+															<button class="btn btn-success btnActive" data-bs-toggle="modal" data-bs-target="#activeModal" teks="<?= $value->TEXT ?>" id="<?= $value->ID ?>">Aktifkan</button>
+														<?php } ?>
 													</td>
 												</tr>
 											<?php } ?>
@@ -95,6 +114,40 @@
 												class="btn btn-danger">Cancel</button>
 												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Add
 													Pertanyaan</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- modal untuk Active -->
+			<div class="modal fade" id="activeModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Yakin Aktifkan Pertanyaan Dibawah Ini ?</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body p-0">
+							<div class="container-fluid">
+								<form action="<?= base_url('pertanyaan/active') ?>" method="post">
+									<div class="row gy-4">
+										<div class="col-lg-8">
+											<div class="col-lg-6">
+												<input type="hidden" id="activeId" name="id" value="">
+												<p id="activeText"></p>
+											</div>
+											<br>
+											<div class="col-lg-10">
+												<button type="button" data-bs-dismiss="modal"
+												class="btn btn-danger">Cancel</button>
+												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Aktifkan Pertanyaan</button>
 												</div>
 											</div>
 										</div>
@@ -193,6 +246,16 @@
 
 			$('#updateText').html(teks);
 			$('#updateId').val(id);
+		});
+
+		$('body').on('click', '.btnActive', function() {
+			let teks = $(this).attr('teks');
+			let id = $(this).attr('id');
+
+			console.log(teks);
+
+			$('#activeText').html(teks);
+			$('#activeId').val(id);
 		});
 	})
 </script>

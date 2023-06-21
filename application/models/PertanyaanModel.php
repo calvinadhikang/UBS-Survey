@@ -22,14 +22,25 @@ class PertanyaanModel extends CI_Model {
 
     public function delete($id)
     {
-        $this->db->query("UPDATE $this->table_name SET STATUS = 0 WHERE ID = '$id'");
+        $this->db->query("UPDATE $this->table_name SET STATUS = 0 WHERE ID = $id");
+    }
+    
+    public function active($id)
+    {
+        $this->db->query("UPDATE $this->table_name SET STATUS = 1 WHERE ID = $id");
     }
 
     public function get($id = null){
         if ($id === null) {
-            return $this->db->query("SELECT * FROM $this->table_name WHERE STATUS = 1")->result();
+            return $this->db->query("SELECT * FROM $this->table_name")->result();
         }else{
             return $this->db->query("SELECT * FROM $this->table_name WHERE ID = $id")->result();
+        }
+    }
+
+    public function getActive($id = null){
+        if ($id === null) {
+            return $this->db->query("SELECT * FROM $this->table_name WHERE STATUS = 1")->result();
         }
     }
 
