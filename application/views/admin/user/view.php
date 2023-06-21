@@ -128,7 +128,7 @@
 			</div>
 
 			<!-- UNTUK MODAL SAAT DI TEKAN ADD -->
-			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+			<div class="modal fade" data-bs-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
 				aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered modal-xl">
 					<div class="modal-content">
@@ -141,15 +141,28 @@
 								<form action="<?= base_url('user/add') ?>" method="post">
 									<div class="row gy-4">
 										<div class="col-lg-8">
-											<div class="col-lg-10">
+											<div class="col-lg-10 mb-3">
 												<label class="form-label">Nama User</label>
 												<input type="text" class="form-control" name="nama"
 													placeholder="Masukkan Nama User" required>
 											</div>
-											<br>
-											<div class="col-lg-10">
+											<div class="col-lg-10 mb-3">
+												<label class="form-label">Role</label>
+												<div class="form-check">
+													<input class="form-check-input role-check-add" type="radio" name="role"
+														id="flexRadioDefault1" value="0">
+													<label class="form-check-label" for="flexRadioDefault1">Admin</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input role-check-add" type="radio" name="role"
+														id="flexRadioDefault2" checked value="1">
+													<label class="form-check-label"
+														for="flexRadioDefault2">Responden</label>
+												</div>
+											</div>
+											<div class="col-lg-10 mb-3 divisi-form-add">
 												<label class="form-label">Divisi</label>
-												<select name="divisi" id="" class="form-control" required>
+												<select name="divisi" id="divisi-add" class="form-control" required>
 													<option value="" selected disabled>Pilih Divisi</option>
 													<option value="ADMIN" >ADMIN</option>
 													<?php foreach ($divisi as $key => $value) { ?>
@@ -157,35 +170,17 @@
 													<?php } ?>
 												</select>
 											</div>
-											<br>
-											<div class="col-lg-10">
+											<div class="col-lg-10 mb-3">
 												<label class="form-label">Username</label>
 												<input type="text" class="form-control" name="username"
 													placeholder="Masukkan Username" required>
 											</div>
-											<br>
-											<div class="col-lg-10">
+											<div class="col-lg-10 mb-3">
 												<label class="form-label">Password</label>
 												<input type="text" class="form-control" name="password"
 													placeholder="Masukan Password" required>
 											</div>
-											<br>
-											<div class="col-lg-10">
-												<label class="form-label">Role</label>
-												<div class="form-check">
-													<input class="form-check-input" type="radio" name="role"
-														id="flexRadioDefault1" value="0">
-													<label class="form-check-label" for="flexRadioDefault1">Admin</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="radio" name="role"
-														id="flexRadioDefault2" checked value="1">
-													<label class="form-check-label"
-														for="flexRadioDefault2">Responden</label>
-												</div>
-											</div>
-											<br>
-											<div class="col-lg-10">
+											<div class="col-lg-10 ">
 												<button type="button" data-bs-dismiss="modal"
 													class="btn btn-danger">Cancel</button>
 												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Add
@@ -216,15 +211,28 @@
 									<input type="hidden" name="id" id="updateId">
 									<div class="row gy-4">
 										<div class="col-lg-8">
-											<div class="col-lg-10">
+											<div class="col-lg-10 mb-3">
 												<label class="form-label">Nama User</label>
 												<input type="text" class="form-control" name="nama"
 													placeholder="Masukkan Nama User" required id="updateName">
 											</div>
-											<br>
-											<div class="col-lg-10">
+											<div class="col-lg-10 mb-3">
+												<label class="form-label">Role</label>
+												<div class="form-check">
+													<input class="form-check-input role-check-update" type="radio" name="role"
+														id="flexRadioDefault1" value="0">
+													<label class="form-check-label" for="flexRadioDefault1">Admin</label>
+												</div>
+												<div class="form-check">
+													<input class="form-check-input role-check-update" type="radio" name="role"
+														id="flexRadioDefault2" checked value="1">
+													<label class="form-check-label"
+														for="flexRadioDefault2">Responden</label>
+												</div>
+											</div>
+											<div class="col-lg-10 divisi-form-update mb-3">
 												<label class="form-label">Divisi</label>
-												<select name="divisi" id="" class="form-control" required>
+												<select name="divisi" id="divisi-update" class="form-control" required>
 													<option value="" selected disabled>Pilih Divisi</option>
 													<option value="ADMIN" >ADMIN</option>
 													<?php foreach ($divisi as $key => $value) { ?>
@@ -232,35 +240,17 @@
 													<?php } ?>
 												</select>
 											</div>
-											<br>
-											<div class="col-lg-10">
+											<div class="col-lg-10 mb-3">
 												<label class="form-label">Username</label>
 												<input type="text" class="form-control" name="username"
 													placeholder="Masukkan Username" required id="updateUsername">
 											</div>
-											<br>
-											<div class="col-lg-10">
+											<div class="col-lg-10 mb-3">
 												<label class="form-label">Password</label>
 												<input type="text" class="form-control" name="password"
 													placeholder="Masukan Password" required id="updatePassword">
 											</div>
-											<br>
-											<div class="col-lg-10">
-												<label class="form-label">Role</label>
-												<div class="form-check">
-													<input class="form-check-input" type="radio" name="role"
-														id="flexRadioDefault1" value="0">
-													<label class="form-check-label" for="flexRadioDefault1">Admin</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="radio" name="role"
-														id="flexRadioDefault2" checked value="1">
-													<label class="form-check-label"
-														for="flexRadioDefault2">Responden</label>
-												</div>
-											</div>
-											<br>
-											<div class="col-lg-10">
+											<div class="col-lg-10 mb-3">
 												<label class="form-label">Status</label>
 												<div class="form-check">
 													<input class="form-check-input" type="radio" name="status"
@@ -291,7 +281,7 @@
 			</div>
 
 			<!-- UNTUK MODAL SAAT DI TEKAN DELETE -->
-			<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+			<div class="modal fade" data-bs-backdrop="static" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
 				aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered modal-xl">
 					<div class="modal-content">
@@ -323,7 +313,7 @@
 			</div>
 
 			<!-- UNTUK MODAL SAAT DI TEKAN RESET PASSWORD -->
-			<div class="modal fade" id="randomModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal fade" data-bs-backdrop="static" id="randomModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered modal-xl">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -407,6 +397,30 @@ $(document).ready(() => {
 			$('#excelLoading').hide();
 		}
 	}
+
+	$(document).on('change', '.role-check-add', (e) => {
+		let val = e.target.value;
+		//admin = 0;
+		if (val == 1) {
+			$('.divisi-form-add').show();
+			$('#divisi-add').attr('required', true);
+		}else{
+			$('.divisi-form-add').hide();
+			$('#divisi-add').attr('required', false);
+		}
+	})
+
+	$(document).on('change', '.role-check-update', (e) => {
+		let val = e.target.value;
+		//admin = 0;
+		if (val == 1) {
+			$('.divisi-form-update').show();
+			$('#divisi-update').attr('required', true);
+		}else{
+			$('.divisi-form-update').hide();
+			$('#divisi-update').attr('required', false);
+		}
+	})
 
 	$(document).on('click', '#excel', () => {
 		let request = new Request("<?= base_url() ?>api/user?active=1", {

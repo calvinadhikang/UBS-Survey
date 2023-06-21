@@ -21,11 +21,15 @@ class User extends CI_Controller {
 
 	public function add()
 	{
-		$divisi = $this->input->post('divisi');
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$nama = $this->input->post('nama');
 		$role = $this->input->post('role');
+		if ($role == 0) {
+			$divisi = "ADMIN";
+		} else {
+			$divisi = $this->input->post('divisi');
+		}		
 		$status = 1;
 		$result = $this->User->add($divisi, $username, $nama, $password, $role, $status);
 
@@ -43,8 +47,12 @@ class User extends CI_Controller {
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$nama = $this->input->post('nama');
-		$divisi = $this->input->post('divisi');
 		$role = $this->input->post('role');
+		if ($role == 0) {
+			$divisi = "ADMIN";
+		} else {
+			$divisi = $this->input->post('divisi');
+		}	
 		$status = $this->input->post('status');
 
 		$result = $this->User->update($id, $divisi, $username, $nama, $password, $role, $status);
