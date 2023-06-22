@@ -127,11 +127,13 @@
 										<div class="col-lg-10">
 											<input type="hidden" name="alias" id="deleteId" value="">
 											<p id="deleteText"></p>
+											<br>
+											<h3 style="color: red;">Divisi Akan Di Hapus Permanen, Aksi ini tidak bisa dikembalikan</h3>
 										</div>
 										<div class="col-lg-10">
 											<button type="button" data-bs-dismiss="modal"
-												class="btn btn-danger">Cancel</button>
-											<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Hapus
+												class="btn btn-info">Cancel</button>
+											<button type="submit" data-bs-dismiss="modal" class="btn btn-danger">Hapus
 												Divisi</button>
 										</div>
 									</div>

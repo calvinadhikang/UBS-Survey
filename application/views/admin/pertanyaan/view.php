@@ -180,8 +180,8 @@
 											<br>
 											<div class="col-lg-10">
 												<button type="button" data-bs-dismiss="modal"
-												class="btn btn-danger">Cancel</button>
-												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Hapus Pertanyaan</button>
+												class="btn btn-info">Cancel</button>
+												<button type="submit" data-bs-dismiss="modal" class="btn btn-danger">Hapus Pertanyaan</button>
 												</div>
 											</div>
 										</div>

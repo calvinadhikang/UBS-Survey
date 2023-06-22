@@ -343,8 +343,8 @@
 											</div>
 											<br>
 											<div class="col-lg-10">
-												<button type="button" data-bs-dismiss="modal"class="btn btn-danger">Cancel</button>
-												<button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Hapus User</button>
+												<button type="button" data-bs-dismiss="modal"class="btn btn-info">Cancel</button>
+												<button type="submit" data-bs-dismiss="modal" class="btn btn-danger">Hapus User</button>
 											</div>
 										</div>
 									</div>
